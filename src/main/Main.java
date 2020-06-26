@@ -18,7 +18,7 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-        IJPaintController controller = new JPaintController(uiModule, appState);
+        JPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
 
         // For example purposes only; remove all lines below from your final project.
