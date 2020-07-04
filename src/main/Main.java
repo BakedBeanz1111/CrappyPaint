@@ -14,15 +14,20 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
+        //Define UI Look at feel
         PaintCanvasBase paintCanvas = new PaintCanvas();
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
+
+        //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
+
+        //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState);
+
+        //Setup Mouse
+
+
         controller.setup();
-
-        // For example purposes only; remove all lines below from your final project.
-
-        
     }
 }
