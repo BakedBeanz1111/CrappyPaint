@@ -18,9 +18,9 @@ public class Shape {
     //At its core, what makes a shape a shape on a 2D rendering plane?
     private Point startPoint;
     private Point endPoint;
-    private model.ShapeColor shapeColor;
-    private model.ShapeColor fillColor;
-    private model.ShapeType shapeType;
+    private ShapeColor shapeColor;
+    private ShapeColor fillColor;
+    private ShapeType shapeType;
 
 
     //getters

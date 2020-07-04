@@ -3,6 +3,7 @@ package main;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.persistence.ApplicationState;
+import src.controller.MouseAdapter;
 import view.gui.Gui;
 import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
@@ -26,7 +27,8 @@ public class Main {
         JPaintController controller = new JPaintController(uiModule, appState);
 
         //Setup Mouse
-
+        MouseAdapter mouseAdapter = new MouseAdapter();
+        paintCanvas.addMouseListener(mouseAdapter);
 
         controller.setup();
     }
