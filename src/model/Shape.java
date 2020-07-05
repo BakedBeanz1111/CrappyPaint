@@ -4,7 +4,6 @@ import java.awt.*;
 
 import model.ShapeColor;
 import model.ShapeType;
-import src.model.*;
 
 //Object Class for Shape definition
 //For Sprint #1, all we care about are shapes having
@@ -16,11 +15,11 @@ import src.model.*;
 public class Shape {
 
     //At its core, what makes a shape a shape on a 2D rendering plane?
-    private Point startPoint;
-    private Point endPoint;
-    private ShapeColor shapeColor;
-    private ShapeColor fillColor;
-    private ShapeType shapeType;
+    public Point startPoint;
+    public Point endPoint;
+    public ShapeColor shapeColor;
+    public ShapeColor fillColor;
+    public ShapeType shapeType;
 
 
     //getters
@@ -47,7 +46,7 @@ public class Shape {
     public void setEndPoint(Point endPoint) {
         this.endPoint = endPoint;
     }
-    public void setShapeColor(model.ShapeColor shapeColor) {
+    public void setShapeColor(ShapeColor shapeColor) {
         this.shapeColor = shapeColor;
     }
     public void setFillColor(ShapeColor fillColor) {

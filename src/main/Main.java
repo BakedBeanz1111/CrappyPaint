@@ -1,6 +1,5 @@
 package main;
 
-import controller.IJPaintController;
 import controller.JPaintController;
 import model.persistence.ApplicationState;
 import src.controller.MouseAdapter;
