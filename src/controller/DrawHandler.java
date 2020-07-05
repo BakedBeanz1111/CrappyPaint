@@ -1,19 +1,22 @@
 package src.controller;
 
+import model.Shape;
 import view.gui.PaintCanvas;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class DrawHandler {
 
-    private static PaintCanvas paintCanvas;
+    public PaintCanvas paintCanvas;
 
     public DrawHandler(PaintCanvas paintCanvas) {
-        paintCanvas.getGraphics2D();
+        this.paintCanvas = paintCanvas;
     }
 
-    public static void draw(Shape shape) {
-        Graphics2D graphics2D = paintCanvas.getGraphics2D();
-        graphics2D.draw(shape);
+    public void update(ArrayList<Shape> shapeArrayList) {
+        for (Shape shape : shapeArrayList ){
+            paintCanvas.getGraphics2D().drawRect(shape.getStartPoint().x, shape.getStartPoint().y, shape.getWidth(), shape.getHeight());
+        }
     }
+
 }

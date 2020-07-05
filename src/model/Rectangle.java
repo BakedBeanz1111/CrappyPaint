@@ -1,45 +1,30 @@
 package src.model;
 
+import model.Shape;
+import model.ShapeList;
+import model.ShapeType;
 import java.awt.*;
 
-//Rectangle contains all of Shape and then some
 public class Rectangle {
 
-    //With rectangle shape, you care about the following parameters beyond the scope of generic shape
-    private static int height;
-    private static int width;
-    private static int x;
-    private static int y;
-    static Point startPoint;
-    static Point endPoint;
+    public Point startPoint;
+    public Point endPoint;
+    public ShapeList shapeList;
+    public ShapeType shapeType;
 
-    //getters
-    public int getHeight() {
-        return height;
-    }
-    public int getWidth() {
-        return width;
+    public Rectangle(Point startPoint, Point endPoint, ShapeList shapeList, ShapeType shapeType) {
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.shapeList = shapeList;
+        this.shapeType = shapeType;
     }
 
-    //setters
-    public void setHeight(int height) {
-        this.height = endPoint.y - startPoint.y;
-    }
-    public void setWidth(int width) {
-        this.width = endPoint.x - startPoint.x;
-    }
+    public void run() {
+        System.out.println(startPoint.toString());
+        System.out.println(endPoint.toString());
+        System.out.println(shapeType.toString());
 
-    public Rectangle(int x, int y, int height, int width) {
-        this.x = startPoint.x;
-        this.y = startPoint.y;
-        this.height = height;
-        this.width = width;
-    }
-
-    public static void drawRectangle() {
-        height = endPoint.y - startPoint.y;
-        width = endPoint.x - startPoint.x;
-
-        Rectangle rectangle = new Rectangle(startPoint.x,startPoint.y, height, width);
+        Shape rectangle = new Shape(startPoint, endPoint);
+        shapeList.add(rectangle);
     }
 }
