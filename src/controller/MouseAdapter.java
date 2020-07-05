@@ -44,13 +44,12 @@ public class MouseAdapter extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        shapeType = applicationState.getActiveShapeType();
+        System.out.println("Shape type = " + shapeType);
+
         actionLog("Mouse Clicked", e);
         endPoint = new Point(e.getX(), e.getY());
         System.out.println(endPoint.toString());
-
-        System.out.println("Shape type = " + shapeType);
-
-        shapeType = applicationState.getActiveShapeType();
 
         if(applicationState.getActiveShapeType().equals("RECTANGLE")) {
             Rectangle rectangle = new Rectangle(startPoint.x, startPoint.y, endPoint.y - startPoint.y, endPoint.x - startPoint.x );
