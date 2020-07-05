@@ -1,24 +1,28 @@
 package src.controller;
 
-//An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
-// (Taken from https://www.javatpoint.com/adapter-pattern)
-
+import src.model.Rectangle;
 import view.gui.PaintCanvas;
-
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Point;
+import model.ShapeType;
+import model.interfaces.IApplicationState;
 
+//An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
+// (Taken from https://www.javatpoint.com/adapter-pattern)
 public class MouseAdapter extends JPanel implements MouseListener {
 
+    private IApplicationState applicationState;
     private PaintCanvas paintCanvas;
     private Point startPoint;
     private Point endPoint;
+    private ShapeType shapeType;
 
-    public MouseAdapter() {
+    public MouseAdapter(IApplicationState applicationState) {
         paintCanvas =new PaintCanvas();
         paintCanvas.addMouseListener(this); //I'm not sure what this "I:" is before this. It pops up when I use the auto-complete
+        this.applicationState = applicationState;
     }
 
     //Debug Function
@@ -43,6 +47,19 @@ public class MouseAdapter extends JPanel implements MouseListener {
         actionLog("Mouse Clicked", e);
         endPoint = new Point(e.getX(), e.getY());
         System.out.println(endPoint.toString());
+
+        System.out.println("Shape type = " + shapeType);
+
+        shapeType = applicationState.getActiveShapeType();
+
+        if(applicationState.getActiveShapeType().equals("RECTANGLE")) {
+            Rectangle rectangle = new Rectangle(startPoint.x, startPoint.y, endPoint.y - startPoint.y, endPoint.x - startPoint.x );
+            Rectangle.drawRectangle();
+
+            System.out.println(startPoint.toString());
+            System.out.println(endPoint.toString());
+            System.out.println(shapeType.toString());
+        }
     }
 
     //Remove this function because it seems to do the exact same thing as mouseReleased

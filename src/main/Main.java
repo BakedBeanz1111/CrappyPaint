@@ -26,7 +26,7 @@ public class Main {
         JPaintController controller = new JPaintController(uiModule, appState);
 
         //Setup Mouse
-        MouseAdapter mouseAdapter = new MouseAdapter();
+        MouseAdapter mouseAdapter = new MouseAdapter(appState);
         paintCanvas.addMouseListener(mouseAdapter);
 
         controller.setup();
