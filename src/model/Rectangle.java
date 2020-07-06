@@ -20,10 +20,6 @@ public class Rectangle {
     }
 
     public void run() {
-        System.out.println(startPoint.toString());
-        System.out.println(endPoint.toString());
-        System.out.println(shapeType.toString());
-
         Shape rectangle = new Shape(startPoint, endPoint);
         shapeList.add(rectangle);
     }

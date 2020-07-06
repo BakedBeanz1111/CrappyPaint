@@ -2,7 +2,6 @@ package src.controller;
 
 import model.ShapeList;
 import src.model.Rectangle;
-import view.gui.PaintCanvas;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,15 +14,12 @@ import model.interfaces.IApplicationState;
 public class MouseAdapter extends JPanel implements MouseListener {
 
     private IApplicationState applicationState;
-    //private PaintCanvas paintCanvas;
     private Point startPoint;
     private Point endPoint;
     private ShapeType shapeType;
     private ShapeList shapeList;
 
     public MouseAdapter(IApplicationState applicationState, ShapeList shapeList) {
-        //paintCanvas =new PaintCanvas();
-        //paintCanvas.addMouseListener(this);
         this.applicationState = applicationState;
         this.shapeList = shapeList;
     }
@@ -39,6 +35,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
     public void mousePressed(MouseEvent e) {
         actionLog("Mouse Pressed", e);
         startPoint = new Point(e.getX(), e.getY());
+        System.out.println(startPoint.toString());
     }
 
     @Override
@@ -47,6 +44,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
         actionLog("Mouse Clicked", e);
 
         endPoint = new Point(e.getX(), e.getY());
+        System.out.println(endPoint.toString());
 
         if(shapeType.toString().equals("RECTANGLE")) {
             Rectangle rectangle = new Rectangle(startPoint, endPoint, shapeList, shapeType);
