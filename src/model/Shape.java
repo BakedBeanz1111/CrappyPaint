@@ -9,7 +9,7 @@ public class Shape {
     public int width;
 
     //Experimental for getting shapes to draw properly
-    //public int xMin, xMax, yMin, yMax;
+    public int xMin, xMax, yMin, yMax;
 
     public Shape(Point startPoint, Point endPoint) {
         this.startPoint = startPoint;
@@ -31,8 +31,8 @@ public class Shape {
         //Down and to the left flips along the X&Y-axis
         //Up and to the left flips along the X&Y-axis
 
-        height = Math.abs(endPoint.y - startPoint.y);
-        width = Math.abs(endPoint.x - startPoint.x);
+        //height = Math.abs(endPoint.y - startPoint.y);
+        //width = Math.abs(endPoint.x - startPoint.x);
 
         //Noticed an issue when drawing rectangles
         //Shapes only appear on correct start point and end point when shapes are drawn down and to the left
@@ -51,6 +51,16 @@ public class Shape {
             width = Math.abs(startPoint.x - endPoint.x);
 
         ---- different attempt ----
+*/
+        //The Observed behavior of this implementation are as follows:
+        //Down and to the Right -- Works
+        //Up and to the Right flips along the Y-axis
+        //Down and to the left flips along the X&Y-axis
+        //Up and to the left flips along the X&Y-axis
+
+        //Since the observed behavior is the same based on both implementations
+        //I'm lead to believe the issue isn't here
+
 
         xMin = Math.min(startPoint.x, endPoint.x);
         xMax = Math.max(startPoint.x, endPoint.x);
@@ -59,8 +69,6 @@ public class Shape {
         yMin = Math.min(startPoint.y, endPoint.y);
         yMax = Math.max(startPoint.y, endPoint.y);
         height = yMax - yMin;
-
-         */
 
     }
 
@@ -76,6 +84,12 @@ public class Shape {
     }
     public int getWidth() {
         return width;
+    }
+    public int getxMin() {
+        return xMin;
+    }
+    public int getyMin() {
+        return yMin;
     }
 
     //setters

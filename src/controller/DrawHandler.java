@@ -15,7 +15,7 @@ public class DrawHandler {
 
     public void update(ArrayList<Shape> shapeArrayList) {
         for (Shape shape : shapeArrayList ){
-            paintCanvas.getGraphics2D().drawRect(shape.getStartPoint().x, shape.getStartPoint().y, shape.getWidth(), shape.getHeight());
+            paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
         }
     }
 
