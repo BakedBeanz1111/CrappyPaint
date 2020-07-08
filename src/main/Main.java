@@ -33,7 +33,10 @@ public class Main {
         paintCanvas.addMouseListener(mouseAdapter);
 
         //Setup Drawing
+        Graphics2D graphics2D = paintCanvas.getGraphics2D();
         DrawHandler drawHandler = new DrawHandler(paintCanvas);
+
+
 
         controller.setup();
     }

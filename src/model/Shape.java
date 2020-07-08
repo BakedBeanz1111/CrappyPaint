@@ -7,11 +7,12 @@ public class Shape {
     public Point endPoint;
     public int height;
     public int width;
+    public ShapeColor fillColor;
 
     //Experimental for getting shapes to draw properly
     public int xMin, xMax, yMin, yMax;
 
-    public Shape(Point startPoint, Point endPoint) {
+    public Shape(Point startPoint, Point endPoint, ShapeColor fillColor) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
 
@@ -60,7 +61,7 @@ public class Shape {
 
         //Since the observed behavior is the same based on both implementations
         //I'm lead to believe the issue isn't here
-
+        //I was right, I had to fix draw handler to use the xMin/yMin origin points
 
         xMin = Math.min(startPoint.x, endPoint.x);
         xMax = Math.max(startPoint.x, endPoint.x);
@@ -70,6 +71,7 @@ public class Shape {
         yMax = Math.max(startPoint.y, endPoint.y);
         height = yMax - yMin;
 
+        this.fillColor = fillColor;
     }
 
     //getters
@@ -104,5 +106,8 @@ public class Shape {
     }
     public void setWidth(int width) {
         this.width = width;
+    }
+    public void setFillColor(ShapeColor shapeColor) {
+        this.fillColor = shapeColor;
     }
 }

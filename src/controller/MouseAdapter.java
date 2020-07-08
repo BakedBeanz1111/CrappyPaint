@@ -1,5 +1,6 @@
 package src.controller;
 
+import model.ShapeColor;
 import model.ShapeList;
 import src.model.Rectangle;
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private Point endPoint;
     private ShapeType shapeType;
     private ShapeList shapeList;
+    private ShapeColor shapeColor;
 
     public MouseAdapter(IApplicationState applicationState, ShapeList shapeList) {
         this.applicationState = applicationState;
@@ -41,13 +43,16 @@ public class MouseAdapter extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         shapeType = applicationState.getActiveShapeType();
+        shapeColor = applicationState.getActiveSecondaryColor();
+        System.out.println(shapeColor.toString());
         actionLog("Mouse Clicked", e);
 
         endPoint = new Point(e.getX(), e.getY());
         System.out.println(endPoint.toString());
 
         if(shapeType.toString().equals("RECTANGLE")) {
-            Rectangle rectangle = new Rectangle(startPoint, endPoint, shapeList, shapeType);
+            Rectangle rectangle = new Rectangle(startPoint, endPoint, shapeList, shapeType, shapeColor);
+            rectangle.setFillColor(shapeColor);
             rectangle.run();
         }
         else {
