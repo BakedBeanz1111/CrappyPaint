@@ -28,8 +28,6 @@ public class MouseAdapter extends JPanel implements MouseListener {
         this.shapeList = shapeList;
     }
 
-    //Debug Function
-    //Output string to console for whenever the mouse does something
     private void actionLog(String action, MouseEvent e) {
         System.out.println(action);
     }
@@ -45,6 +43,9 @@ public class MouseAdapter extends JPanel implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         actionLog("Mouse Released", e);
         endPoint = new Point(e.getX(),e.getY());
+
+        shapeType = applicationState.getActiveShapeType();
+        System.out.println("Shape Type is: " + shapeType.toString());
 
         drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeList);
         drawShapeCommand.run();

@@ -1,6 +1,8 @@
 package src.controller;
 
 import model.Shape;
+import model.ShapeType;
+import model.interfaces.IApplicationState;
 import view.gui.PaintCanvas;
 
 import java.awt.geom.Ellipse2D;
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 public class DrawShapeHandler {
 
     public PaintCanvas paintCanvas;
+    private IApplicationState applicationState;
+    private ShapeType shapeType;
 
     public DrawShapeHandler(PaintCanvas paintCanvas) {
         this.paintCanvas = paintCanvas;
@@ -16,6 +20,7 @@ public class DrawShapeHandler {
 
     public void update(ArrayList<Shape> shapeArrayList) {
         for (Shape shape : shapeArrayList ){
+
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
                 paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
             }
