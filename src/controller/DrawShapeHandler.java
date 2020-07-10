@@ -29,15 +29,10 @@ public class DrawShapeHandler {
             }
             else if(shape.getShapeType().toString().equals("TRIANGLE")) {
                 int[] xCoordinates = {shape.getxMin(), shape.getxMax(), shape.getTriangleMidPoint()};
-                int[] yCoordinates = {shape.getyMin(), shape.getyMax()};
+                int[] yCoordinates = {shape.getyMin(), shape.getyMax(), shape.getyMin()};
 
                 paintCanvas.getGraphics2D().drawPolygon(xCoordinates, yCoordinates, 3);
             }
-            //use draw* for putting shapes. I only used fillRect to fill in the rectangle for sprint #1
-            //paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()); //using shape.getxMin()/getyMin() solved the drawing problem
-            //paintCanvas.getGraphics2D().fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
-
         }
     }
-
 }
