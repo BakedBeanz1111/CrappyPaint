@@ -1,9 +1,9 @@
 package src.controller;
 
+import model.DrawShapeCommand;
 import model.ShapeColor;
 import model.ShapeList;
-import model.Triangle;
-import src.model.Rectangle;
+
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -21,6 +21,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private ShapeType shapeType;
     private ShapeList shapeList;
     private ShapeColor shapeColor;
+    private DrawShapeCommand drawShapeCommand;
 
     public MouseAdapter(IApplicationState applicationState, ShapeList shapeList) {
         this.applicationState = applicationState;
@@ -38,29 +39,15 @@ public class MouseAdapter extends JPanel implements MouseListener {
     public void mousePressed(MouseEvent e) {
         actionLog("Mouse Pressed", e);
         startPoint = new Point(e.getX(), e.getY());
-        System.out.println(startPoint.toString());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        shapeType = applicationState.getActiveShapeType();
-        shapeColor = applicationState.getActiveSecondaryColor();
-        System.out.println(shapeColor.toString());
         actionLog("Mouse Released", e);
+        endPoint = new Point(e.getX(),e.getY());
 
-        endPoint = new Point(e.getX(), e.getY());
-        System.out.println(endPoint.toString());
-
-        if(shapeType.toString().equals("RECTANGLE")) {
-            Rectangle rectangle = new Rectangle(startPoint, endPoint, shapeList, shapeType, shapeColor);
-            rectangle.setFillColor(shapeColor);
-            rectangle.run();
-        }
-        if(shapeType.toString().equals("TRIANGLE")) {
-            Triangle triangle = new Triangle(startPoint, endPoint, shapeList, shapeType, shapeColor);
-            triangle.setFillColor(shapeColor);
-            triangle.run();
-        }
+        drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeList);
+        drawShapeCommand.run();
     }
 
     //Remove this function because it seems to do the exact same thing as mouseReleased

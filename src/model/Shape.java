@@ -50,6 +50,18 @@ public class Shape {
     public int getyMin() {
         return yMin;
     }
+    public int getxMax() {
+        return xMax;
+    }
+    public int getyMax() {
+        return yMax;
+    }
+    public int getTriangleMidPoint() {
+        return triangleMidPoint;
+    }
+    public ShapeType getShapeType() {
+        return shapeType;
+    }
 
     //setters
     public void setStartPoint(Point startPoint) {
@@ -63,8 +75,5 @@ public class Shape {
     }
     public void setWidth(int width) {
         this.width = width;
-    }
-    public void setFillColor(ShapeColor shapeColor) {
-        this.fillColor = shapeColor;
     }
 }

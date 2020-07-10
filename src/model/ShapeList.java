@@ -4,18 +4,17 @@ package model;
 //https://mkyong.com/swing/java-swing-draw-shapes-dynamically-example/
 
 import java.util.ArrayList;
-import src.controller.DrawHandler;
 
 public class ShapeList {
     ArrayList<Shape> shapeArrayList = new ArrayList<Shape>();
-    DrawHandler drawHandler;
+    src.controller.DrawShapeHandler drawShapeHandler;
 
-    public ShapeList(DrawHandler drawHandler) {
-        this.drawHandler = drawHandler;
+    public ShapeList(src.controller.DrawShapeHandler drawShapeHandler) {
+        this.drawShapeHandler = drawShapeHandler;
     }
 
     public void add(Shape shape) {
         shapeArrayList.add(shape);
-        drawHandler.update(shapeArrayList);
+        drawShapeHandler.update(shapeArrayList);
     }
 }
