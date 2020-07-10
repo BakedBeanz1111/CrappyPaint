@@ -2,6 +2,7 @@ package src.controller;
 
 import model.ShapeColor;
 import model.ShapeList;
+import model.Triangle;
 import src.model.Rectangle;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -45,7 +46,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
         shapeType = applicationState.getActiveShapeType();
         shapeColor = applicationState.getActiveSecondaryColor();
         System.out.println(shapeColor.toString());
-        actionLog("Mouse Clicked", e);
+        actionLog("Mouse Released", e);
 
         endPoint = new Point(e.getX(), e.getY());
         System.out.println(endPoint.toString());
@@ -55,8 +56,10 @@ public class MouseAdapter extends JPanel implements MouseListener {
             rectangle.setFillColor(shapeColor);
             rectangle.run();
         }
-        else {
-            System.out.println("nothing to see here for sprint 1!");
+        if(shapeType.toString().equals("TRIANGLE")) {
+            Triangle triangle = new Triangle(startPoint, endPoint, shapeList, shapeType, shapeColor);
+            triangle.setFillColor(shapeColor);
+            triangle.run();
         }
     }
 
