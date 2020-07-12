@@ -12,24 +12,30 @@ public class ColorSingleton {
 
     public ShapeColor shapeColor;
     public EnumMap<ShapeColor, Color> colorEnumMap;
+    public static ColorSingleton colorSingleton;
 
-    public ColorSingleton(ShapeColor shapeColor) {
+    public ColorSingleton(ShapeColor shapeColor, EnumMap<ShapeColor, Color> colorEnumMap) {
         this.shapeColor = shapeColor;
+        this.colorEnumMap = colorEnumMap;
 
-        EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
+        this.colorEnumMap.put(ShapeColor.BLACK, Color.BLACK);
+        this.colorEnumMap.put(ShapeColor.BLUE, Color.BLUE);
+        this.colorEnumMap.put(ShapeColor.CYAN, Color.CYAN);
+        this.colorEnumMap.put(ShapeColor.DARK_GRAY, Color.DARK_GRAY);
+        this.colorEnumMap.put(ShapeColor.GRAY, Color.GRAY);
+        this.colorEnumMap.put(ShapeColor.GREEN, Color.GREEN);
+        this.colorEnumMap.put(ShapeColor.LIGHT_GRAY, Color.LIGHT_GRAY);
+        this.colorEnumMap.put(ShapeColor.MAGENTA, Color.MAGENTA);
+        this.colorEnumMap.put(ShapeColor.ORANGE, Color.ORANGE);
+        this.colorEnumMap.put(ShapeColor.PINK, Color.PINK);
+        this.colorEnumMap.put(ShapeColor.RED, Color.RED);
+        this.colorEnumMap.put(ShapeColor.WHITE, Color.WHITE);
+        this.colorEnumMap.put(ShapeColor.YELLOW, Color.YELLOW);
+    }
 
-        colorEnumMap.put(ShapeColor.BLACK, Color.BLACK);
-        colorEnumMap.put(ShapeColor.BLUE, Color.BLUE);
-        colorEnumMap.put(ShapeColor.CYAN, Color.CYAN);
-        colorEnumMap.put(ShapeColor.DARK_GRAY, Color.DARK_GRAY);
-        colorEnumMap.put(ShapeColor.GRAY, Color.GRAY);
-        colorEnumMap.put(ShapeColor.GREEN, Color.GREEN);
-        colorEnumMap.put(ShapeColor.LIGHT_GRAY, Color.LIGHT_GRAY);
-        colorEnumMap.put(ShapeColor.MAGENTA, Color.MAGENTA);
-        colorEnumMap.put(ShapeColor.ORANGE, Color.ORANGE);
-        colorEnumMap.put(ShapeColor.PINK, Color.PINK);
-        colorEnumMap.put(ShapeColor.RED, Color.RED);
-        colorEnumMap.put(ShapeColor.WHITE, Color.WHITE);
-        colorEnumMap.put(ShapeColor.YELLOW, Color.YELLOW);
+    public static ColorSingleton getInstance(ShapeColor shapeColor, EnumMap<ShapeColor, Color> colorEnumMap) {
+        colorSingleton = new ColorSingleton(shapeColor, colorEnumMap);
+
+        return colorSingleton;
     }
 }

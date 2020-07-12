@@ -1,5 +1,6 @@
 package src.controller;
 
+import model.ColorSingleton;
 import model.Shape;
 import model.ShapeColor;
 import model.ShapeType;
@@ -13,20 +14,28 @@ import java.util.ArrayList;
 public class DrawShapeHandler {
 
     public PaintCanvas paintCanvas;
-    private IApplicationState applicationState;
-    private ShapeType shapeType;
-    private ShapeColor shapeColor;
-    private Color color;
+    public IApplicationState applicationState;
+    public ShapeType shapeType;
+    public ShapeColor shapeColor;
+    public ShapeColor lineColor;
+    public Color shapeColorMapped;
+    public Color lineColorMapped;
 
     public DrawShapeHandler(PaintCanvas paintCanvas) {
         this.paintCanvas = paintCanvas;
     }
 
     public void update(ArrayList<Shape> shapeArrayList) {
+
+        ColorSingleton shapeColorSingleton = new ColorSingleton(shapeColor);
+        ColorSingleton lineColorSingleton = new ColorSingleton(lineColor);
+
         for (Shape shape : shapeArrayList ){
 
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
                 paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+
+
 
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
@@ -41,9 +50,6 @@ public class DrawShapeHandler {
             else {
                 System.out.println("How did you get here? There are only 3 shapes!");
             }
-            shapeColor = applicationState.getActiveSecondaryColor();
-            
-            paintCanvas.getGraphics2D().setColor(color);
         }
     }
 }
