@@ -1,7 +1,5 @@
 package model;
 
-import model.interfaces.IApplicationState;
-
 import java.awt.*;
 
 public class Shape {

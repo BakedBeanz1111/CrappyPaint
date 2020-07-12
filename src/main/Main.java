@@ -9,6 +9,7 @@ import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
 import view.interfaces.IGuiWindow;
 import view.interfaces.IUiModule;
+import src.controller.DrawShapeHandler;
 
 import java.awt.*;
 
@@ -29,12 +30,6 @@ public class Main {
         //Setup Mouse
         MouseAdapter mouseAdapter = new MouseAdapter(appState, shapeList);
         paintCanvas.addMouseListener(mouseAdapter);
-
-        //Setup Drawing
-        Graphics2D graphics2D = paintCanvas.getGraphics2D();
-        src.controller.DrawShapeHandler drawShapeHandler = new src.controller.DrawShapeHandler(paintCanvas);
-
-
 
         controller.setup();
     }
