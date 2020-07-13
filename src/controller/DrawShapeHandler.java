@@ -10,6 +10,7 @@ import view.gui.PaintCanvas;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class DrawShapeHandler {
 
@@ -20,23 +21,42 @@ public class DrawShapeHandler {
     public ShapeColor lineColor;
     public Color shapeColorMapped;
     public Color lineColorMapped;
+    public ColorSingleton shapeColorSingleton;
+    public ColorSingleton lineColorSingleton;
 
-    public DrawShapeHandler(PaintCanvas paintCanvas) {
+    public DrawShapeHandler(PaintCanvas paintCanvas, IApplicationState applicationState) {
         this.paintCanvas = paintCanvas;
+        this.applicationState = applicationState;
     }
 
     public void update(ArrayList<Shape> shapeArrayList) {
 
-        ColorSingleton shapeColorSingleton = new ColorSingleton(shapeColor);
-        ColorSingleton lineColorSingleton = new ColorSingleton(lineColor);
+        EnumMap<ShapeColor, Color> enumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
+        enumMap.put(ShapeColor.BLUE, Color.BLUE);
+        enumMap.put(ShapeColor.GREEN, Color.GREEN);
+
+
 
         for (Shape shape : shapeArrayList ){
 
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
+                //The following line prints normally everything after is experimental for printing with color
+                //paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+
+                //application state is null
+                //System.out.println(enumMap.toString());
+
+                shapeColorSingleton = new ColorSingleton(applicationState.getActivePrimaryColor(), enumMap);
+                lineColorSingleton = new ColorSingleton(applicationState.getActiveSecondaryColor(), enumMap);
+
+                shapeColorMapped = enumMap.get(applicationState.getActivePrimaryColor());
+                lineColorMapped = enumMap.get(applicationState.getActiveSecondaryColor());
+
+                paintCanvas.getGraphics2D().setColor(shapeColorMapped);
                 paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
 
-
-
+                paintCanvas.getGraphics2D().setColor(lineColorMapped);
+                paintCanvas.getGraphics2D().fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
                 paintCanvas.getGraphics2D().draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));

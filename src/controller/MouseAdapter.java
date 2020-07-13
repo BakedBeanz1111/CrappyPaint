@@ -22,6 +22,8 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private ShapeList shapeList;
     private ShapeColor shapeColor;
     private DrawShapeCommand drawShapeCommand;
+    private ShapeColor lineColor;
+    private ShapeColor fillColor;
 
     public MouseAdapter(IApplicationState applicationState, ShapeList shapeList) {
         this.applicationState = applicationState;
@@ -46,6 +48,12 @@ public class MouseAdapter extends JPanel implements MouseListener {
 
         shapeType = applicationState.getActiveShapeType();
         System.out.println("Shape Type is: " + shapeType.toString());
+
+        lineColor = applicationState.getActivePrimaryColor();
+        fillColor = applicationState.getActiveSecondaryColor();
+
+        System.out.println("line color is: " + lineColor.toString());
+        System.out.println("fill color is: " + fillColor.toString());
 
         drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeList);
         drawShapeCommand.run();

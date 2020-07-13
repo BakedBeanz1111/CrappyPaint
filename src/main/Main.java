@@ -19,10 +19,11 @@ public class Main {
         PaintCanvas paintCanvas = new PaintCanvas();
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
-        ShapeList shapeList = new ShapeList(new src.controller.DrawShapeHandler(paintCanvas));
 
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
+
+        ShapeList shapeList = new ShapeList(new src.controller.DrawShapeHandler(paintCanvas, appState));
 
         //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState);

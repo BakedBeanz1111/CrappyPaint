@@ -8,6 +8,8 @@ public class Shape {
     public int height;
     public int width;
     public ShapeType shapeType;
+    public ShapeColor shapeColor;
+    public ShapeColor lineColor;
 
     //Experimental for getting shapes to draw properly
     public int xMin, xMax, yMin, yMax, triangleMidPoint;
