@@ -39,4 +39,5 @@ public class ColorSingleton {
 
         return colorSingleton;
     }
+
 }
