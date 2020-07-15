@@ -17,4 +17,23 @@ public class ShapeList {
         shapeArrayList.add(shape);
         drawShapeHandler.update(shapeArrayList);
     }
+
+    public void remove(Shape shape) {
+        shapeArrayList.remove(shape);
+        drawShapeHandler.update(shapeArrayList);
+    }
+
+    public int size() {
+        int counter = 0;
+
+        for(Shape shape:shapeArrayList) {
+            counter ++;
+        }
+
+        return counter;
+    }
+
+    public Shape getShapeIndex(int index) {
+        return this.shapeArrayList.get(index);
+    }
 }
