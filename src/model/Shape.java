@@ -76,4 +76,13 @@ public class Shape {
     public void setWidth(int width) {
         this.width = width;
     }
+
+    public boolean containsPoints(int x, int y) {
+        if (x >= startPoint.x && x < startPoint.x + width && y >= startPoint.y && y < startPoint.y + height) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
