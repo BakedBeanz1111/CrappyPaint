@@ -85,4 +85,12 @@ public class Shape {
             return false;
         }
     }
+
+    public Color getShapeColor() {
+        return ShapeColor.getMap().get(shapeColor);
+    }
+
+    public Color getLineColor() {
+        return ShapeColor.getMap().get(lineColor);
+    }
 }

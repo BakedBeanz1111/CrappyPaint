@@ -40,5 +40,4 @@ public class ShapeFactory {
             System.out.println("TRIANGLE!!!");
         }
     }
-
 }
