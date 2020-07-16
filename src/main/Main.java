@@ -27,6 +27,7 @@ public class Main {
 
         //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState);
+        model.ShapeColor.setup();
 
         //Setup Mouse
         MouseAdapter mouseAdapter = new MouseAdapter(appState, shapeList);

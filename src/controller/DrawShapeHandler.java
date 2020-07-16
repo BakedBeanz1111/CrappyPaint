@@ -35,7 +35,7 @@ public class DrawShapeHandler {
         enumMap.put(ShapeColor.BLUE, Color.BLUE);
         enumMap.put(ShapeColor.GREEN, Color.GREEN);
 
-
+        Graphics2D graphics2D = paintCanvas.getGraphics2D();
 
         for (Shape shape : shapeArrayList ){
 
@@ -55,14 +55,18 @@ public class DrawShapeHandler {
                 shapeColorMapped = enumMap.get(applicationState.getActivePrimaryColor());
                 lineColorMapped = enumMap.get(applicationState.getActiveSecondaryColor());
 
-                System.out.println("" + shapeColorMapped);
-                System.out.println("" + lineColorMapped);
+                System.out.println("" + shape.getShapeColor());
+                System.out.println("" + shape.getLineColor());
 
-                paintCanvas.getGraphics2D().setColor(shapeColorMapped);
-                paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+                //paintCanvas.getGraphics2D().setColor(shape.getShapeColor());
+                //paintCanvas.getGraphics2D().drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+                graphics2D.setColor(shapeColorMapped);
+                graphics2D.fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
 
-                //paintCanvas.getGraphics2D().setColor(lineColorMapped);
+                //paintCanvas.getGraphics2D().setColor(shape.getLineColor());
                 //paintCanvas.getGraphics2D().fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+                graphics2D.setColor(lineColorMapped);
+                graphics2D.drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
                 paintCanvas.getGraphics2D().draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
