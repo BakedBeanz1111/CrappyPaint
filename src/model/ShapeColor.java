@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.EnumMap;
 
 public enum ShapeColor {
+
     BLACK,
     BLUE,
     CYAN,
@@ -22,6 +23,7 @@ public enum ShapeColor {
     private static EnumMap<ShapeColor, Color> colorMap;
 
     public static void setup(){
+
         colorMap = new EnumMap<>(ShapeColor.class);
         colorMap.put(ShapeColor.BLACK, Color.BLACK);
         colorMap.put(ShapeColor.BLUE, Color.BLUE);
@@ -39,6 +41,7 @@ public enum ShapeColor {
     }
 
         public static EnumMap<ShapeColor, Color> getMap(){
-        return colorMap;
+
+            return colorMap;
     }
 }

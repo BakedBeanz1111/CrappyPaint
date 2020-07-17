@@ -15,6 +15,7 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
+
         //Define UI Look at feel
         PaintCanvas paintCanvas = new PaintCanvas();
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);

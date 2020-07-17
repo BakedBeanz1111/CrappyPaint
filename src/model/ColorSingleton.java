@@ -16,6 +16,7 @@ public class ColorSingleton {
 
     //default constructor
     public ColorSingleton(ShapeColor shapeColor, EnumMap<ShapeColor, Color> colorEnumMap) {
+
         this.shapeColor = shapeColor;
         this.colorEnumMap = colorEnumMap;
 
@@ -35,6 +36,7 @@ public class ColorSingleton {
     }
 
     public static ColorSingleton getInstance(ShapeColor shapeColor, EnumMap<ShapeColor, Color> colorEnumMap) {
+
         colorSingleton = new ColorSingleton(shapeColor, colorEnumMap);
 
         return colorSingleton;

@@ -29,6 +29,7 @@ public class SelectShapeCommand {
         for (Shape shape : shapeList) {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
+
                 //add shape to list
             }
         }

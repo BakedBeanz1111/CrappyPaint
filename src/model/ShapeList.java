@@ -6,24 +6,29 @@ package model;
 import java.util.ArrayList;
 
 public class ShapeList {
+
     ArrayList<Shape> shapeArrayList = new ArrayList<Shape>();
     src.controller.DrawShapeHandler drawShapeHandler;
 
     public ShapeList(src.controller.DrawShapeHandler drawShapeHandler) {
+
         this.drawShapeHandler = drawShapeHandler;
     }
 
     public void add(Shape shape) {
+
         shapeArrayList.add(shape);
         drawShapeHandler.update(shapeArrayList);
     }
 
     public void remove(Shape shape) {
+
         shapeArrayList.remove(shape);
         drawShapeHandler.update(shapeArrayList);
     }
 
     public int size() {
+
         int counter = 0;
 
         for(Shape shape:shapeArrayList) {
@@ -34,6 +39,7 @@ public class ShapeList {
     }
 
     public Shape getShapeIndex(int index) {
+
         return this.shapeArrayList.get(index);
     }
 }

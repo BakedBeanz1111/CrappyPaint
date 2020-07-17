@@ -20,7 +20,6 @@ public class ShapeFactory {
     public void createRectangle() {
 
         if(applicationState.getActiveShapeType().toString().equals("RECTANGLE")) {
-
             System.out.println(("RECTANGLE!!!"));
         }
     }
@@ -28,7 +27,6 @@ public class ShapeFactory {
     public void createEllipse() {
 
         if(applicationState.getActiveShapeType().toString().equals("ELLIPSE")) {
-
             System.out.println(("ELLIPSE!!!"));
         }
     }
@@ -36,7 +34,6 @@ public class ShapeFactory {
     public  void createTriangle() {
 
         if(applicationState.getActiveShapeType().toString().equals("TRIANGLE")) {
-
             System.out.println("TRIANGLE!!!");
         }
     }
