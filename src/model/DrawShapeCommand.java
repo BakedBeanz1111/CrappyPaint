@@ -9,22 +9,20 @@ public class DrawShapeCommand {
     public ShapeType shapeType;
     public ShapeList shapeList;
     public Shape shape;
-    public Color shapeColor;
-    public Color lineColor;
+    public ShapeFactory shapeFactory;
 
-    public DrawShapeCommand(Point startPoint, Point endPoint, ShapeType shapeType, ShapeList shapeList, Color shapeColor, Color lineColor) {
+
+    public DrawShapeCommand(Point startPoint, Point endPoint, ShapeType shapeType, ShapeFactory shapeFactory) {
 
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.shapeType = shapeType;
-        this.shapeList = shapeList;
-        this.shapeColor = shapeColor;
-        this.lineColor = lineColor;
+        this.shapeFactory = shapeFactory;
     }
 
     public void run() {
 
-        shape = new Shape(startPoint, endPoint, shapeType, shapeColor, lineColor);
-        shapeList.add(shape);
+        shape = new Shape(startPoint, endPoint, shapeType, shapeFactory.applicationState.getActivePrimaryColor(), shapeFactory.applicationState.getActiveSecondaryColor(), shapeFactory);
+        shapeFactory.shapeList.add(shape);
     }
 }

@@ -1,15 +1,12 @@
 package src.controller;
 
-import model.DrawShapeCommand;
-import model.ShapeColor;
-import model.ShapeList;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import model.ShapeType;
 import model.interfaces.IApplicationState;
 
 //An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
@@ -23,14 +20,10 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private ShapeList shapeList;
     private ShapeColor shapeColor;
     private DrawShapeCommand drawShapeCommand;
-    private ShapeColor lineColor;
-    private ShapeColor fillColor;
-    private Color line;
-    private Color fill;
+    public ShapeFactory shapeFactory;
 
-    public MouseAdapter(IApplicationState applicationState, ShapeList shapeList) {
-        this.applicationState = applicationState;
-        this.shapeList = shapeList;
+    public MouseAdapter(ShapeFactory shapeFactory) {
+        this.shapeFactory = shapeFactory;
     }
 
     private void actionLog(String action, MouseEvent e) {
@@ -47,20 +40,11 @@ public class MouseAdapter extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         actionLog("Mouse Released", e);
-        endPoint = new Point(e.getX(),e.getY());
 
-        shapeType = applicationState.getActiveShapeType();
-        System.out.println("Shape Type is: " + shapeType.toString());
+        endPoint = new Point(e.getX(), e.getY());
+        shapeType = shapeFactory.applicationState.getActiveShapeType();
 
-        lineColor = applicationState.getActivePrimaryColor();
-        line = ShapeColor.getMap().get(lineColor);
-        fillColor = applicationState.getActiveSecondaryColor();
-        fill = ShapeColor.getMap().get(fillColor);
-
-        System.out.println("line color is: " + lineColor.toString());
-        System.out.println("fill color is: " + fillColor.toString());
-
-        drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeList, line, fill);
+        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
         drawShapeCommand.run();
     }
 

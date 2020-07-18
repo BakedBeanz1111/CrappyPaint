@@ -1,27 +1,29 @@
 package model;
 
+import model.interfaces.IApplicationState;
+
 import java.awt.*;
 
 public class Shape {
 
+    public IApplicationState applicationState;
     public Point startPoint;
     public Point endPoint;
     public int height;
     public int width;
-    public ShapeType shapeType;
-    public Color shapeColor;
-    public Color lineColor;
     public int xMin, xMax, yMin, yMax, triangleMidPoint;
+    public ShapeType shapeType;
+    public ShapeList shapeList;
+    public ShapeColor shapeColor;
+    public ShapeColor lineColor;
+    public ShapeFactory shapeFactory;
 
-    public Shape(Point startPoint, Point endPoint, ShapeType shapeType, Color shapeColor, Color lineColor) {
+    public Shape(Point startPoint, Point endPoint, ShapeType shapeType, ShapeColor shapeColor, ShapeColor lineColor, ShapeFactory shapeFactory) {
 
         this.shapeType = shapeType;
 
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-
-        this.shapeColor = shapeColor;
-        this.lineColor = lineColor;
 
         xMin = Math.min(startPoint.x, endPoint.x);
         xMax = Math.max(startPoint.x, endPoint.x);
@@ -32,9 +34,19 @@ public class Shape {
         height = yMax - yMin;
         width = xMax - xMin;
         triangleMidPoint = xMin + (width/2);
+
+        this.shapeColor = shapeColor;
+        this.lineColor = lineColor;
+
+        this.shapeFactory = shapeFactory;
     }
 
     //getters
+    public IApplicationState getApplicationState(){
+
+        return applicationState;
+    }
+
     public Point getStartPoint() {
 
         return startPoint;
@@ -85,6 +97,27 @@ public class Shape {
         return shapeType;
     }
 
+    public ShapeList getShapeList() {
+
+        return shapeList;
+    }
+
+    public ShapeColor getShapeColor() {
+
+        return shapeColor;
+    }
+
+    public ShapeColor getLineColor() {
+
+        return lineColor;
+    }
+
+    public ShapeFactory getShapeFactory() {
+
+        return shapeFactory;
+    }
+
+
     //setters
     public void setStartPoint(Point startPoint) {
 
@@ -106,12 +139,12 @@ public class Shape {
         this.width = width;
     }
 
-    public void setShapeColor(Color shapeColor) {
+    public void setShapeColor(ShapeColor shapeColor) {
 
         this.shapeColor = shapeColor;
     }
 
-    public void setLineColor(Color lineColor) {
+    public void setLineColor(ShapeColor lineColor) {
 
         this.lineColor = lineColor;
     }
@@ -124,15 +157,5 @@ public class Shape {
         else {
             return false;
         }
-    }
-
-    public Color getShapeColor() {
-
-        return ShapeColor.getMap().get(shapeColor);
-    }
-
-    public Color getLineColor() {
-
-        return ShapeColor.getMap().get(lineColor);
     }
 }

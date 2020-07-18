@@ -4,13 +4,15 @@ package model;
 
 import model.interfaces.IApplicationState;
 
+import java.util.List;
+
 public class ShapeFactory {
 
     public IApplicationState applicationState;
     public Shape shape;
     public ShapeList shapeList;
 
-    public ShapeFactory(IApplicationState applicationState, Shape shape, ShapeList shapeList) {
+    public ShapeFactory(IApplicationState applicationState, ShapeList shapeList) {
 
         this.applicationState = applicationState;
         this.shape = shape;

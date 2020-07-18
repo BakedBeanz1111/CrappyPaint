@@ -1,6 +1,7 @@
 package main;
 
 import controller.JPaintController;
+import model.ShapeFactory;
 import model.ShapeList;
 import model.persistence.ApplicationState;
 import src.controller.MouseAdapter;
@@ -24,14 +25,15 @@ public class Main {
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
 
-        ShapeList shapeList = new ShapeList(new src.controller.DrawShapeHandler(paintCanvas, appState));
+        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas));
+        ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList);
 
         //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState);
         model.ShapeColor.setup();
 
         //Setup Mouse
-        MouseAdapter mouseAdapter = new MouseAdapter(appState, shapeList);
+        MouseAdapter mouseAdapter = new MouseAdapter(shapeFactory);
         paintCanvas.addMouseListener(mouseAdapter);
 
         controller.setup();
