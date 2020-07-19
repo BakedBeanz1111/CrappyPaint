@@ -28,12 +28,11 @@ public class DrawShapeHandler {
     public void update(ArrayList<Shape> shapeArrayList) {
 
         Graphics2D graphics2D = paintCanvas.getGraphics2D();
+        EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
 
         for (Shape shape : shapeArrayList ) {
 
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
-
-                EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
 
                 shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
                 lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
@@ -50,7 +49,18 @@ public class DrawShapeHandler {
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
 
-                paintCanvas.getGraphics2D().draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
+                shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
+                lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
+
+                shapeColorMapped = colorEnumMap.get(shape.shapeColor);
+                lineColorMapped = colorEnumMap.get(shape.lineColor);
+
+                graphics2D.setColor(shapeColorMapped);
+                graphics2D.fill(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
+
+                graphics2D.setColor(lineColorMapped);
+                graphics2D.draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
+                //paintCanvas.getGraphics2D().draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
             }
             else if(shape.getShapeType().toString().equals("TRIANGLE")) {
 
