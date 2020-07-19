@@ -21,6 +21,8 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private ShapeColor shapeColor;
     private DrawShapeCommand drawShapeCommand;
     public ShapeFactory shapeFactory;
+    public Point newStartPoint;
+    public Point newEndPoint;
 
     public MouseAdapter(ShapeFactory shapeFactory) {
         this.shapeFactory = shapeFactory;
@@ -39,13 +41,26 @@ public class MouseAdapter extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        actionLog("Mouse Released", e);
 
         endPoint = new Point(e.getX(), e.getY());
         shapeType = shapeFactory.applicationState.getActiveShapeType();
 
-        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
-        drawShapeCommand.run();
+        if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.DRAW) {
+
+            DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
+            drawShapeCommand.run();
+        }
+        else if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.SELECT) {
+
+            SelectShapeCommand selectShapeCommand = new SelectShapeCommand(startPoint, endPoint, shapeFactory);
+            selectShapeCommand.run();
+        }
+        else if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.MOVE) {
+
+            System.out.println("MOVE COMMAND WOULD BE HERE!!!");
+            //MoveShapeCommand moveShapeCommand = new MoveShapeCommand();
+        }
+
     }
 
     //Remove this function because it seems to do the exact same thing as mouseReleased

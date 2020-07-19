@@ -6,16 +6,17 @@ import java.util.List;
 public class SelectShapeCommand {
 
     public Shape shape;
-    public List<Shape> selectedShapesList;
     public Point startPoint;
     public Point endPoint;
     public int xStart, yStart, xEnd, yEnd;
+    public List<Shape> selectedShapesList;
+    public ShapeFactory shapeFactory;
 
-    public SelectShapeCommand(Shape shape, Point startPoint, Point endPoint) {
+    public SelectShapeCommand(Point startPoint, Point endPoint, ShapeFactory shapeFactory) {
 
-        this.shape = shape;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
+        this.shapeFactory = shapeFactory;
     }
 
     public void addShapeToList(List<Shape> shapeList) {
@@ -30,9 +31,15 @@ public class SelectShapeCommand {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
 
-                //add shape to list
+                shapeFactory.shapeList.add(shape);
             }
         }
 
+    }
+
+    public void run() {
+
+        addShapeToList(shapeFactory.shapeList.shapeArrayList);
+        shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.shapeArrayList);
     }
 }
