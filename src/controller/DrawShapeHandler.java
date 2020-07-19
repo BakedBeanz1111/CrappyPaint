@@ -3,8 +3,6 @@ package src.controller;
 import model.ColorSingleton;
 import model.Shape;
 import model.ShapeColor;
-import model.ShapeType;
-import model.interfaces.IApplicationState;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -32,13 +30,13 @@ public class DrawShapeHandler {
 
         for (Shape shape : shapeArrayList ) {
 
+            shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
+            lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
+
+            shapeColorMapped = colorEnumMap.get(shape.shapeColor);
+            lineColorMapped = colorEnumMap.get(shape.lineColor);
+
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
-
-                shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
-                lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
-
-                shapeColorMapped = colorEnumMap.get(shape.shapeColor);
-                lineColorMapped = colorEnumMap.get(shape.lineColor);
 
                 graphics2D.setColor(shapeColorMapped);
                 graphics2D.fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
@@ -49,25 +47,22 @@ public class DrawShapeHandler {
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
 
-                shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
-                lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
-
-                shapeColorMapped = colorEnumMap.get(shape.shapeColor);
-                lineColorMapped = colorEnumMap.get(shape.lineColor);
-
                 graphics2D.setColor(shapeColorMapped);
                 graphics2D.fill(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
 
                 graphics2D.setColor(lineColorMapped);
                 graphics2D.draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
-                //paintCanvas.getGraphics2D().draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
             }
             else if(shape.getShapeType().toString().equals("TRIANGLE")) {
 
                 int[] xCoordinates = {shape.getxMin(), shape.getTriangleMidPoint(), shape.getxMax() };
                 int[] yCoordinates = {shape.getyMin(), shape.getyMax(), shape.getyMin()};
 
-                paintCanvas.getGraphics2D().drawPolygon(xCoordinates, yCoordinates, 3);
+                graphics2D.setColor(shapeColorMapped);
+                graphics2D.fillPolygon(xCoordinates, yCoordinates, 3);
+
+                graphics2D.setColor(lineColorMapped);
+                graphics2D.drawPolygon(xCoordinates, yCoordinates, 3);
             }
             else {
 
