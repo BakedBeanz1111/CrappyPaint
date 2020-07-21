@@ -1,39 +1,47 @@
 package model;
 
-import java.awt.*;
+
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MoveShapeCommand {
 
-    public Point newStartPoint;
-    public Point newEndPoint;
-    public ShapeList shapeList;
-    Shape shape;
+    public Point mousePressed;
+    public Point mouseReleased;
+    public ShapeType shapeType;
+    public List<Shape> moveShapeList = new ArrayList<>();
+    public ShapeFactory shapeFactory;
 
-    public MoveShapeCommand(Point newStartPoint, Point newEndPoint, ShapeList shapeList) {
+    public MoveShapeCommand(Point mousePressed, Point mouseReleased, ShapeType shapeType, ShapeFactory shapeFactory) {
 
-        this.newStartPoint = newStartPoint;
-        this.newEndPoint = newEndPoint;
-        this.shapeList = shapeList;
+        this.mousePressed = mousePressed;
+        this.mouseReleased = mouseReleased;
+        this.shapeType = shapeType;
+        this.shapeFactory = shapeFactory;
 
     }
 
-    public void moveShape() {
+    public void moveShape(List<Shape> shapeList) {
 
         int deltaX, deltaY;
         int newOriginX, newOriginY;
         int newEndX, newEndY;
 
-        deltaX =  newEndPoint.x - newStartPoint.x;
-        deltaY = newEndPoint.y - newStartPoint.y;
+        deltaX =  mouseReleased.x - mousePressed.x;
+        deltaY = mouseReleased.y - mousePressed.y;
 
-        newOriginX = shape.startPoint.x + deltaX;
-        newOriginY = shape.startPoint.y + deltaY;
+        for(Shape shape : shapeList) {
 
-        newEndX = shape.endPoint.x + deltaX;
-        newEndY = shape.endPoint.y + deltaY;
+            newOriginX = shape.startPoint.x + deltaX;
+            newOriginY = shape.startPoint.y + deltaY;
 
-        shape.startPoint = new Point(newOriginX, newOriginY);
-        shape.endPoint = new Point(newEndX, newEndY);
+            newEndX = shape.endPoint.x + deltaX;
+            newEndY = shape.endPoint.y + deltaY;
+
+            shape.startPoint = new Point(newOriginX, newOriginY);
+            shape.endPoint = new Point(newEndX, newEndY);
+        }
     }
 
     public void run() {
