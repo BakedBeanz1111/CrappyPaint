@@ -25,12 +25,13 @@ public class Main {
         IUiModule uiModule = new Gui(guiWindow);
 
         List<Shape> globalShapeList = new ArrayList<Shape>();
+        List<Shape> selectedShapesList = new ArrayList<Shape>();
 
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
 
         ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas), globalShapeList);
-        ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList);
+        ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList);
 
         //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState);

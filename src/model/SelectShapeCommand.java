@@ -19,7 +19,7 @@ public class SelectShapeCommand {
         this.shapeFactory = shapeFactory;
     }
 
-    public void addShapeToList(List<Shape> shapeList) {
+    public void addShapeToList(List<Shape> globalShapeList) {
 
         xStart = startPoint.x;
         yStart = startPoint.y;
@@ -27,11 +27,11 @@ public class SelectShapeCommand {
         xEnd = endPoint.x;
         yEnd = endPoint.y;
 
-        for (Shape shape : shapeList) {
+        for (Shape shape : globalShapeList) {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
 
-                shapeFactory.shapeList.add(shape);
+                shapeFactory.selectedShapesList.add(shape);
             }
         }
 
