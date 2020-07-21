@@ -45,6 +45,8 @@ public class MoveShapeCommand {
     }
 
     public void run() {
-        moveShape();
+        moveShape(shapeFactory.shapeList.globalShapeList);
+        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+        shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }
