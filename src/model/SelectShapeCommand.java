@@ -39,7 +39,7 @@ public class SelectShapeCommand {
 
     public void run() {
 
-        addShapeToList(shapeFactory.shapeList.shapeArrayList);
-        shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.shapeArrayList);
+        addShapeToList(shapeFactory.shapeList.globalShapeList);
+        shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

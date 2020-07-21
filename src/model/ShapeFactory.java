@@ -22,21 +22,21 @@ public class ShapeFactory {
     public void createRectangle() {
 
         if(applicationState.getActiveShapeType().toString().equals("RECTANGLE")) {
-            shapeList.shapeArrayList.add(shape);
+            shapeList.globalShapeList.add(shape);
         }
     }
 
     public void createEllipse() {
 
         if(applicationState.getActiveShapeType().toString().equals("ELLIPSE")) {
-            shapeList.shapeArrayList.add(shape);
+            shapeList.globalShapeList.add(shape);
         }
     }
 
     public  void createTriangle() {
 
         if(applicationState.getActiveShapeType().toString().equals("TRIANGLE")) {
-            shapeList.shapeArrayList.add(shape);
+            shapeList.globalShapeList.add(shape);
         }
     }
 }

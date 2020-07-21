@@ -13,16 +13,10 @@ import model.interfaces.IApplicationState;
 // (Taken from https://www.javatpoint.com/adapter-pattern)
 public class MouseAdapter extends JPanel implements MouseListener {
 
-    private IApplicationState applicationState;
     private Point startPoint;
     private Point endPoint;
     private ShapeType shapeType;
-    private ShapeList shapeList;
-    private ShapeColor shapeColor;
-    private DrawShapeCommand drawShapeCommand;
     public ShapeFactory shapeFactory;
-    public Point newStartPoint;
-    public Point newEndPoint;
 
     public MouseAdapter(ShapeFactory shapeFactory) {
         this.shapeFactory = shapeFactory;
@@ -46,6 +40,11 @@ public class MouseAdapter extends JPanel implements MouseListener {
         shapeType = shapeFactory.applicationState.getActiveShapeType();
 
         if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.DRAW) {
+
+            System.out.println("startPoint: " + startPoint);
+            System.out.println("endPoint: " + endPoint);
+            System.out.println("shapeType: " + shapeType.toString());
+            System.out.println(("shapeFactory: " + shapeFactory));
 
             DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
             drawShapeCommand.run();

@@ -4,35 +4,40 @@ package model;
 //https://mkyong.com/swing/java-swing-draw-shapes-dynamically-example/
 
 import java.util.ArrayList;
+import java.util.List;
+
 import src.controller.DrawShapeHandler;
 
 public class ShapeList {
 
-    ArrayList<Shape> shapeArrayList = new ArrayList<Shape>();
     DrawShapeHandler drawShapeHandler;
+    public List<Shape> globalShapeList;
 
-    public ShapeList(src.controller.DrawShapeHandler drawShapeHandler) {
+    public ShapeList(src.controller.DrawShapeHandler drawShapeHandler, List<Shape> globalShapeList) {
 
         this.drawShapeHandler = drawShapeHandler;
+        this.globalShapeList = globalShapeList;
     }
 
     public void add(Shape shape) {
 
-        shapeArrayList.add(shape);
-        drawShapeHandler.update(shapeArrayList);
+        System.out.println("shape: " + shape.toString());
+
+        globalShapeList.add(shape);
+        drawShapeHandler.update(globalShapeList);
     }
 
     public void remove(Shape shape) {
 
-        shapeArrayList.remove(shape);
-        drawShapeHandler.update(shapeArrayList);
+        globalShapeList.remove(shape);
+        drawShapeHandler.update(globalShapeList);
     }
 
     public int size() {
 
         int counter = 0;
 
-        for(Shape shape:shapeArrayList) {
+        for(Shape shape : globalShapeList) {
             counter ++;
         }
 
@@ -41,6 +46,6 @@ public class ShapeList {
 
     public Shape getShapeIndex(int index) {
 
-        return this.shapeArrayList.get(index);
+        return this.globalShapeList.get(index);
     }
 }

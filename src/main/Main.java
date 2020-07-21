@@ -1,6 +1,7 @@
 package main;
 
 import controller.JPaintController;
+import model.Shape;
 import model.ShapeFactory;
 import model.ShapeList;
 import model.persistence.ApplicationState;
@@ -11,8 +12,9 @@ import view.gui.PaintCanvas;
 import view.interfaces.IGuiWindow;
 import view.interfaces.IUiModule;
 import src.controller.DrawShapeHandler;
+import java.util.List;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
@@ -22,10 +24,12 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
+        List<Shape> globalShapeList = new ArrayList<Shape>();
+
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
 
-        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas));
+        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas), globalShapeList);
         ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList);
 
         //Setup Controller

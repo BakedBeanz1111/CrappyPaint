@@ -4,10 +4,11 @@ import model.ColorSingleton;
 import model.Shape;
 import model.ShapeColor;
 import view.gui.PaintCanvas;
+import model.ShapeFactory;
 
 import java.awt.*;
+import java.util.List;
 import java.awt.geom.Ellipse2D;
-import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class DrawShapeHandler {
@@ -23,12 +24,12 @@ public class DrawShapeHandler {
         this.paintCanvas = paintCanvas;
     }
 
-    public void update(ArrayList<Shape> shapeArrayList) {
+    public void update(List<Shape> shapeList) {
 
         Graphics2D graphics2D = paintCanvas.getGraphics2D();
         EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
 
-        for (Shape shape : shapeArrayList ) {
+        for (Shape shape : shapeList ) {
 
             shapeColor = ColorSingleton.getInstance(shape.shapeColor, colorEnumMap);
             lineColor = ColorSingleton.getInstance(shape.lineColor, colorEnumMap);
