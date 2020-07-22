@@ -29,7 +29,7 @@ public class DrawShapeCommand {
         System.out.println("shapeFactory: " + shapeFactory.toString());
 
         shape = new Shape(startPoint, endPoint, shapeType, shapeFactory.applicationState.getActivePrimaryColor(), shapeFactory.applicationState.getActiveSecondaryColor(), shapeFactory);
-        shapeFactory.shapeList.add(shape);
+        shapeFactory.shapeList.globalShapeList.add(shape);
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

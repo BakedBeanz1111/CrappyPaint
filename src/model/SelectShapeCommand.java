@@ -31,7 +31,11 @@ public class SelectShapeCommand {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
 
+                System.out.println("You're clicking on something");
                 shapeFactory.selectedShapesList.add(shape);
+            }
+            else {
+                System.out.println("You're not clicking on anything");
             }
         }
 

@@ -17,8 +17,6 @@ public class MouseAdapter extends JPanel implements MouseListener {
     private Point endPoint;
     private ShapeType shapeType;
     public ShapeFactory shapeFactory;
-    private Point newOrigin;
-    private Point newEnd;
 
     public MouseAdapter(ShapeFactory shapeFactory) {
         this.shapeFactory = shapeFactory;
@@ -53,9 +51,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
         }
         else if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.MOVE) {
 
-            newOrigin = endPoint;
-            newEnd = new Point(e.getX(), e.getY());
-            MoveShapeCommand moveShapeCommand = new MoveShapeCommand(newOrigin, newEnd, shapeType, shapeFactory);
+            MoveShapeCommand moveShapeCommand = new MoveShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
             moveShapeCommand.run();
         }
 

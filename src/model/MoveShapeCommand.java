@@ -28,25 +28,34 @@ public class MoveShapeCommand {
         int newOriginX, newOriginY;
         int newEndX, newEndY;
 
-        deltaX =  mouseReleased.x - mousePressed.x;
-        deltaY = mouseReleased.y - mousePressed.y;
-
         for(Shape shape : shapeList) {
 
-            newOriginX = shape.startPoint.x + deltaX;
-            newOriginY = shape.startPoint.y + deltaY;
+            deltaX =  mouseReleased.x - mousePressed.x;
+            deltaY = mouseReleased.y - mousePressed.y;
 
-            newEndX = shape.endPoint.x + deltaX;
-            newEndY = shape.endPoint.y + deltaY;
+            if(shape.containsPoints(mousePressed.x, mousePressed.y)) {
 
-            shape.startPoint = new Point(newOriginX, newOriginY);
-            shape.endPoint = new Point(newEndX, newEndY);
+                newOriginX = shape.startPoint.x + deltaX;
+                newOriginY = shape.startPoint.y + deltaY;
+
+                newEndX = shape.endPoint.x + deltaX;
+                newEndY = shape.endPoint.y + deltaY;
+
+                Point newOrigin = new Point(newOriginX, newOriginY);
+                Point newEnd = new Point(newEndX, newEndY);
+
+                Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.getShapeColor(), shape.getLineColor(), shapeFactory);
+
+                //moveShapeList.add(shape);
+                moveShapeList.add(movedShape);
+            }
         }
     }
 
     public void run() {
+
         moveShape(shapeFactory.shapeList.globalShapeList);
-        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+        //shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

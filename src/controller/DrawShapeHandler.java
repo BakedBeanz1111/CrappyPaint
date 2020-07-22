@@ -39,6 +39,8 @@ public class DrawShapeHandler {
 
             if(shape.getShapeType().toString().equals("RECTANGLE")) {
 
+                System.out.println("YOU ARE PRINTING A RECTANGLE");
+
                 graphics2D.setColor(shapeColorMapped);
                 graphics2D.fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
 
@@ -48,6 +50,8 @@ public class DrawShapeHandler {
             }
             else if(shape.getShapeType().toString().equals("ELLIPSE")) {
 
+                System.out.println("YOU ARE PRINTING A ELLIPSE");
+
                 graphics2D.setColor(shapeColorMapped);
                 graphics2D.fill(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
 
@@ -55,6 +59,8 @@ public class DrawShapeHandler {
                 graphics2D.draw(new Ellipse2D.Double(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight()));
             }
             else if(shape.getShapeType().toString().equals("TRIANGLE")) {
+
+                System.out.println("YOU ARE PRINTING A TRIANGLE");
 
                 int[] xCoordinates = {shape.getxMin(), shape.getTriangleMidPoint(), shape.getxMax() };
                 int[] yCoordinates = {shape.getyMin(), shape.getyMax(), shape.getyMin()};
