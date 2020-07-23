@@ -12,6 +12,7 @@ public class MoveShapeCommand {
     public ShapeType shapeType;
     public List<Shape> moveShapeList = new ArrayList<>();
     public ShapeFactory shapeFactory;
+    public int deltaX, deltaY;
 
     public MoveShapeCommand(Point mousePressed, Point mouseReleased, ShapeType shapeType, ShapeFactory shapeFactory) {
 
@@ -20,20 +21,18 @@ public class MoveShapeCommand {
         this.shapeType = shapeType;
         this.shapeFactory = shapeFactory;
 
+        deltaX = mouseReleased.x - mousePressed.x;
+        deltaY = mouseReleased.y - mousePressed.y;
     }
 
     public void moveShape(List<Shape> shapeList) {
 
-        int deltaX, deltaY;
-        int newOriginX, newOriginY;
-        int newEndX, newEndY;
-
         for(Shape shape : shapeList) {
 
-            deltaX =  mouseReleased.x - mousePressed.x;
-            deltaY = mouseReleased.y - mousePressed.y;
-
             if(shape.containsPoints(mousePressed.x, mousePressed.y)) {
+
+                int newOriginX, newOriginY;
+                int newEndX, newEndY;
 
                 newOriginX = shape.startPoint.x + deltaX;
                 newOriginY = shape.startPoint.y + deltaY;
@@ -47,6 +46,7 @@ public class MoveShapeCommand {
                 Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.getShapeColor(), shape.getLineColor(), shapeFactory);
 
                 //moveShapeList.add(shape);
+                //shapeList.remove(shape);
                 moveShapeList.add(movedShape);
             }
         }
@@ -55,7 +55,7 @@ public class MoveShapeCommand {
     public void run() {
 
         moveShape(shapeFactory.shapeList.globalShapeList);
-        //shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

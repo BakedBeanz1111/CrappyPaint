@@ -12,7 +12,6 @@ public class ShapeFactory {
     public Shape shape;
     public ShapeList shapeList;
     public List<Shape> selectedShapesList;
-    public List<Shape> copiedShapesList;
 
     public ShapeFactory(IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList) {
 
@@ -20,7 +19,6 @@ public class ShapeFactory {
         this.shape = shape;
         this.shapeList = shapeList;
         this.selectedShapesList = selectedShapesList;
-        this.copiedShapesList = copiedShapesList;
     }
 
     public void createRectangle() {

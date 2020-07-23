@@ -19,7 +19,6 @@ public enum ShapeColor {
     WHITE,
     YELLOW;
 
-    //The following is Chad's code to get an idea as to why my code isn't working
     private static EnumMap<ShapeColor, Color> colorMap;
 
     public static void setup(){
