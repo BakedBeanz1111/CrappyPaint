@@ -21,7 +21,7 @@ public class DrawShapeCommand {
 
     public void run() {
 
-        shape = new Shape(startPoint, endPoint, shapeType, shapeFactory.applicationState.getActivePrimaryColor(), shapeFactory.applicationState.getActiveSecondaryColor(), shapeFactory);
+        shape = new Shape(startPoint, endPoint, shapeType, shapeFactory.applicationState.getActivePrimaryColor(), shapeFactory.applicationState.getActiveSecondaryColor(), shapeFactory, shapeFactory.applicationState.getActiveShapeShadingType());
         shapeFactory.shapeList.globalShapeList.add(shape);
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }

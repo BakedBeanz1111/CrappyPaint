@@ -43,7 +43,7 @@ public class MoveShapeCommand {
                 Point newOrigin = new Point(newOriginX, newOriginY);
                 Point newEnd = new Point(newEndX, newEndY);
 
-                Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.getShapeColor(), shape.getLineColor(), shapeFactory);
+                Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.getShapeColor(), shape.getLineColor(), shapeFactory, shape.shapeShadingType);
 
                 //moveShapeList.add(shape);
                 //shapeList.remove(shape);

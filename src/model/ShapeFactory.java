@@ -13,32 +13,12 @@ public class ShapeFactory {
     public ShapeList shapeList;
     public List<Shape> selectedShapesList;
 
+
     public ShapeFactory(IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList) {
 
         this.applicationState = applicationState;
-        this.shape = shape;
         this.shapeList = shapeList;
         this.selectedShapesList = selectedShapesList;
     }
 
-    public void createRectangle() {
-
-        if(applicationState.getActiveShapeType().toString().equals("RECTANGLE")) {
-            shapeList.globalShapeList.add(shape);
-        }
-    }
-
-    public void createEllipse() {
-
-        if(applicationState.getActiveShapeType().toString().equals("ELLIPSE")) {
-            shapeList.globalShapeList.add(shape);
-        }
-    }
-
-    public  void createTriangle() {
-
-        if(applicationState.getActiveShapeType().toString().equals("TRIANGLE")) {
-            shapeList.globalShapeList.add(shape);
-        }
-    }
 }

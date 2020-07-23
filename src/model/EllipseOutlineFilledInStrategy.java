@@ -20,6 +20,6 @@ public class EllipseOutlineFilledInStrategy {
         graphics2D.fillOval(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
 
         graphics2D.setColor(lineColorMapped);
-        graphics2D.drawOval(shape.getxMax(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+        graphics2D.drawOval(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
     }
 }

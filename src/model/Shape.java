@@ -17,8 +17,9 @@ public class Shape {
     public ShapeColor shapeColor;
     public ShapeColor lineColor;
     public ShapeFactory shapeFactory;
+    public ShapeShadingType shapeShadingType;
 
-    public Shape(Point startPoint, Point endPoint, ShapeType shapeType, ShapeColor shapeColor, ShapeColor lineColor, ShapeFactory shapeFactory) {
+    public Shape(Point startPoint, Point endPoint, ShapeType shapeType, ShapeColor shapeColor, ShapeColor lineColor, ShapeFactory shapeFactory, ShapeShadingType shapeShadingType) {
 
         this.shapeType = shapeType;
 
@@ -39,6 +40,8 @@ public class Shape {
         this.lineColor = lineColor;
 
         this.shapeFactory = shapeFactory;
+
+        this.shapeShadingType = shapeShadingType;
     }
 
     //getters

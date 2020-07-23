@@ -9,6 +9,7 @@ public class TriangleFilledInStrategy {
     public TriangleFilledInStrategy(Shape shape, ShapeColor fillColor, ShapeFactory shapeFactory, Graphics2D graphics2D) {
 
         EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
+        ColorSingleton lineColorSingleton = ColorSingleton.getInstance(fillColor, colorEnumMap);
         Color fillColorMapped = colorEnumMap.get(fillColor);
 
         int[] xCoordinates = {shape.getxMin(), shape.getTriangleMidPoint(), shape.getxMax() };

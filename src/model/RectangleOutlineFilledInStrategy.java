@@ -19,6 +19,6 @@ public class RectangleOutlineFilledInStrategy {
         graphics2D.fillRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
 
         graphics2D.setColor(lineColorMapped);
-        graphics2D.drawRect(shape.getxMax(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+        graphics2D.drawRect(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
     }
 }
