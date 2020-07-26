@@ -7,22 +7,22 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import model.interfaces.IApplicationState;
-
 //An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
 // (Taken from https://www.javatpoint.com/adapter-pattern)
 public class MouseAdapter extends JPanel implements MouseListener {
 
-    private Point startPoint;
-    private Point endPoint;
-    private ShapeType shapeType;
+    public Point startPoint;
+    public Point endPoint;
+    public ShapeType shapeType;
     public ShapeFactory shapeFactory;
 
     public MouseAdapter(ShapeFactory shapeFactory) {
+
         this.shapeFactory = shapeFactory;
     }
 
     private void actionLog(String action, MouseEvent e) {
+
         System.out.println(action);
     }
 
