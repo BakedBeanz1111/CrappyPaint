@@ -1,9 +1,11 @@
 package model;
 
+import model.interfaces.IShapeCommand;
+
 import java.awt.*;
 import java.util.List;
 
-public class SelectShapeCommand {
+public class SelectShapeCommand implements IShapeCommand {
 
     public Point startPoint;
     public Point endPoint;
@@ -37,6 +39,7 @@ public class SelectShapeCommand {
 
     }
 
+    @Override
     public void run() {
 
         addShapeToList(shapeFactory.shapeList.globalShapeList);
