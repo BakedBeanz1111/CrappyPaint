@@ -5,11 +5,9 @@ import java.util.List;
 
 public class SelectShapeCommand {
 
-    public Shape shape;
     public Point startPoint;
     public Point endPoint;
     public int xStart, yStart, xEnd, yEnd;
-    public List<Shape> selectedShapesList;
     public ShapeFactory shapeFactory;
 
     public SelectShapeCommand(Point startPoint, Point endPoint, ShapeFactory shapeFactory) {
@@ -31,13 +29,11 @@ public class SelectShapeCommand {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
 
-                System.out.println("You're clicking on something");
                 shapeFactory.selectedShapesList.add(shape);
             }
-            else {
-                System.out.println("You're not clicking on anything");
-            }
         }
+
+        System.out.println("You have selected " + shapeFactory.selectedShapesList.size() + " shapes");
 
     }
 
