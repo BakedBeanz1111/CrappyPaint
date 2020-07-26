@@ -4,6 +4,7 @@ import controller.JPaintController;
 import model.Shape;
 import model.ShapeFactory;
 import model.ShapeList;
+import model.interfaces.IShapeStrategy;
 import model.persistence.ApplicationState;
 import src.controller.MouseAdapter;
 import view.gui.Gui;
@@ -30,7 +31,8 @@ public class Main {
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
 
-        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas), globalShapeList);
+        IShapeStrategy iShapeStrategy = null;
+        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas, iShapeStrategy), globalShapeList);
         ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList);
 
         //Setup Controller

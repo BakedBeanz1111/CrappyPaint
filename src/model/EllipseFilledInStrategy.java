@@ -8,17 +8,15 @@ import java.util.EnumMap;
 //https://www.tutorialspoint.com/design_pattern/strategy_pattern.htm
 public class EllipseFilledInStrategy implements IShapeStrategy {
 
-    private ShapeColor shapeColor;
-    private ShapeColor lineColor;
-    private Graphics2D graphics2D;
     private Shape shape;
+    private ShapeColor shapeColor;
+    private Graphics2D graphics2D;
 
-    public EllipseFilledInStrategy(ShapeColor shapeColor, ShapeColor lineColor, Graphics2D graphics2D, Shape shape) {
+    public EllipseFilledInStrategy(Shape shape, ShapeColor shapeColor, Graphics2D graphics2D) {
 
-        this.shapeColor = shapeColor;
-        this.lineColor = lineColor;
-        this.graphics2D = graphics2D;
         this.shape = shape;
+        this.shapeColor = shapeColor;
+        this.graphics2D = graphics2D;
     }
 
 
@@ -26,8 +24,8 @@ public class EllipseFilledInStrategy implements IShapeStrategy {
     public Color color(ShapeColor shapeColor) {
 
         EnumMap<ShapeColor, Color> enumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
-        ColorSingleton colorSingleton = new ColorSingleton.getInstance(shapeColor, enumMap);
-        Color mappedColor = colorMap.get(shapeColor);
+        ColorSingleton colorSingleton = ColorSingleton.getInstance(shapeColor, enumMap);
+        Color mappedColor = enumMap.get(shapeColor);
 
         return mappedColor;
     }

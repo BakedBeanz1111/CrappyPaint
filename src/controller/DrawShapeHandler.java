@@ -25,11 +25,51 @@ public class DrawShapeHandler implements IDrawShapeHandler {
 
         for(Shape shape : globalShapeList) {
 
-            if(shape.shapeType.toString().equals("ELLIPSE") && (shape.shapeShadingType.toString().equals("FILLED_IN"))) {
+            if(shape.shapeType.toString().equals("ELLIPSE")) {
+                if(shape.shapeShadingType.toString().equals("FILLED_IN")) {
 
-                iShapeStrategy = new EllipseFilledInStrategy(shape.shapeColor, shape.lineColor, graphics2D, shape);
+                    iShapeStrategy = new EllipseFilledInStrategy(shape, shape.shapeColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE")) {
 
+                    iShapeStrategy = new EllipseOutlineStrategy(shape, shape.lineColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE_AND_FILLED_IN")) {
+
+                    iShapeStrategy = new EllipseOutlineFilledInStrategy(shape, shape.shapeColor, shape.lineColor, graphics2D);
+                }
             }
+
+            if(shape.shapeType.toString().equals("RECTANGLE")) {
+                if(shape.shapeShadingType.toString().equals("FILLED_IN")) {
+
+                    iShapeStrategy = new RectangleFilledInStrategy(shape, shape.shapeColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE")) {
+
+                    iShapeStrategy = new RectangleOutlineStrategy(shape, shape.lineColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE_AND_FILLED_IN")) {
+
+                    iShapeStrategy = new RectangleOutlineFilledInStrategy(shape, shape.shapeColor, shape.lineColor, graphics2D);
+                }
+            }
+
+            if(shape.shapeType.toString().equals("TRIANGLE")) {
+                if(shape.shapeShadingType.toString().equals("FILLED_IN")) {
+
+                    iShapeStrategy = new TriangleFilledInStrategy(shape, shape.shapeColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE")) {
+
+                    iShapeStrategy = new TriangleOutlineStrategy(shape, shape.lineColor, graphics2D);
+                }
+                else if(shape.shapeShadingType.toString().equals("OUTLINE_AND_FILLED_IN")) {
+
+                    iShapeStrategy = new TriangleOutlineFilledInStrategy(shape, shape.shapeColor, shape.lineColor, graphics2D);
+                }
+            }
+
         }
 
         iShapeStrategy.draw();
