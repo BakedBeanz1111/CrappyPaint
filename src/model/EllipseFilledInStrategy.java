@@ -6,13 +6,18 @@ import java.util.EnumMap;
 //https://www.tutorialspoint.com/design_pattern/strategy_pattern.htm
 public class EllipseFilledInStrategy {
 
-    public EllipseFilledInStrategy(Shape shape, ShapeColor fillColor, ShapeFactory shapeFactory, Graphics2D graphics2D) {
+    private ShapeColor shapeColor;
+    private ShapeColor lineColor;
+    private Graphics2D graphics2D;
+    private Shape shape;
 
-        EnumMap<ShapeColor, Color> colorEnumMap = new EnumMap<ShapeColor, Color>(ShapeColor.class);
-        ColorSingleton fillColorSingleton = ColorSingleton.getInstance(fillColor, colorEnumMap);
-        Color fillColorMapped = colorEnumMap.get(fillColor);
+    public EllipseFilledInStrategy(ShapeColor shapeColor, ShapeColor lineColor, Graphics2D graphics2D, Shape shape) {
 
-        graphics2D.setColor(fillColorMapped);
-        graphics2D.fillOval(shape.getxMin(), shape.getyMin(), shape.getWidth(), shape.getHeight());
+        this.shapeColor = shapeColor;
+        this.lineColor = lineColor;
+        this.graphics2D = graphics2D;
+        this.shape = shape;
     }
+
+    
 }
