@@ -2,19 +2,21 @@ package src.controller;
 
 import model.*;
 import model.Shape;
+import model.interfaces.IDrawShapeHandler;
+import model.interfaces.IShapeStrategy;
 import view.gui.PaintCanvas;
-
 import java.awt.*;
 import java.util.List;
-import java.awt.geom.Ellipse2D;
-import java.util.EnumMap;
 
-public class DrawShapeHandler {
+public class DrawShapeHandler implements IDrawShapeHandler {
 
     public PaintCanvas paintCanvas;
+    public IShapeStrategy iShapeStrategy;
 
-    public DrawShapeHandler(PaintCanvas paintCanvas) {
+    public DrawShapeHandler(PaintCanvas paintCanvas, IShapeStrategy iShapeStrategy) {
+
         this.paintCanvas = paintCanvas;
+        this.iShapeStrategy = iShapeStrategy;
     }
 
     public void update(List<Shape> globalShapeList) {
@@ -25,8 +27,11 @@ public class DrawShapeHandler {
 
             if(shape.shapeType.toString().equals("ELLIPSE") && (shape.shapeShadingType.toString().equals("FILLED_IN"))) {
 
-                EllipseFilledInStrategy ellipseFilledInStrategy = new EllipseFilledInStrategy(shape, shape.shapeColor, shape.shap)
+                iShapeStrategy = new EllipseFilledInStrategy(shape.shapeColor, shape.lineColor, graphics2D, shape);
+
             }
         }
+
+        iShapeStrategy.draw();
     }
 }
