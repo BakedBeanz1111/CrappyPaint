@@ -83,10 +83,17 @@ public class Shape {
     public boolean containsPoints(int x, int y) {
 
         if (x >= startPoint.x && x < startPoint.x + width && y >= startPoint.y && y < startPoint.y + height) {
+
             return true;
         }
         else {
+
             return false;
         }
+    }
+
+    public void selectShape() {
+
+        this.lineColor = shapeColor.RED;
     }
 }

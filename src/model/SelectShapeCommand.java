@@ -1,8 +1,10 @@
 package model;
 
 import model.interfaces.IShapeCommand;
+import model.interfaces.IShapeStrategy;
 
 import java.awt.*;
+import java.util.EnumMap;
 import java.util.List;
 
 public class SelectShapeCommand implements IShapeCommand {
@@ -19,7 +21,7 @@ public class SelectShapeCommand implements IShapeCommand {
         this.shapeFactory = shapeFactory;
     }
 
-    public void addShapeToList(List<Shape> globalShapeList) {
+    public void selectShape(List<Shape> globalShapeList) {
 
         xStart = startPoint.x;
         yStart = startPoint.y;
@@ -31,18 +33,19 @@ public class SelectShapeCommand implements IShapeCommand {
 
             if (shape.containsPoints(xStart, yStart) && shape.containsPoints(xEnd, yEnd)) {
 
+                System.out.println("You're clicking something!");
+
+                shape.selectShape();
+
                 shapeFactory.selectedShapesList.add(shape);
             }
         }
-
-        System.out.println("You have selected " + shapeFactory.selectedShapesList.size() + " shapes");
-
     }
 
     @Override
     public void run() {
 
-        addShapeToList(shapeFactory.shapeList.globalShapeList);
+        selectShape(shapeFactory.shapeList.globalShapeList);
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }
