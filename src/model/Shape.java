@@ -94,6 +94,7 @@ public class Shape {
 
     public void selectShape() {
 
+        this.shapeShadingType = shapeShadingType.OUTLINE;
         this.lineColor = shapeColor.RED;
     }
 }

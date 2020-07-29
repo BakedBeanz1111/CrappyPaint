@@ -1,10 +1,8 @@
 package model;
 
 import model.interfaces.IShapeCommand;
-import model.interfaces.IShapeStrategy;
 
 import java.awt.*;
-import java.util.EnumMap;
 import java.util.List;
 
 public class SelectShapeCommand implements IShapeCommand {
