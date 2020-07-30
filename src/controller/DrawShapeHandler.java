@@ -24,6 +24,9 @@ public class DrawShapeHandler implements IDrawShapeHandler {
 
         Graphics2D graphics2D = paintCanvas.getGraphics2D();
 
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
+
         for(Shape shape : globalShapeList) {
 
             if(shape.shapeType.toString().equals("ELLIPSE")) {

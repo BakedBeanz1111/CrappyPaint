@@ -45,11 +45,9 @@ public class MoveShapeCommand implements IShapeCommand {
 
                 shapeList.remove(shape);
                 shapeList.add(movedShape);
-                
+
                 movedShapesList.add(shape);
                 movedShapesList.add(movedShape);
-
-
             }
         }
     }
