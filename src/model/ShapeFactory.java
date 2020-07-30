@@ -9,10 +9,8 @@ import java.util.List;
 public class ShapeFactory {
 
     public IApplicationState applicationState;
-    public Shape shape;
     public ShapeList shapeList;
     public List<Shape> selectedShapesList;
-
 
     public ShapeFactory(IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList) {
 

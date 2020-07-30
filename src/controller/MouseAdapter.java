@@ -44,17 +44,19 @@ public class MouseAdapter extends JPanel implements MouseListener {
             DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
             drawShapeCommand.run();
         }
+
         else if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.SELECT) {
 
             SelectShapeCommand selectShapeCommand = new SelectShapeCommand(startPoint, endPoint, shapeFactory);
             selectShapeCommand.run();
         }
+
         else if(shapeFactory.applicationState.getActiveStartAndEndPointMode()==StartAndEndPointMode.MOVE) {
 
             MoveShapeCommand moveShapeCommand = new MoveShapeCommand(startPoint, endPoint, shapeType, shapeFactory);
             moveShapeCommand.run();
-        }
 
+        }
     }
 
     //Remove this function because it seems to do the exact same thing as mouseReleased

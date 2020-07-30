@@ -1,7 +1,6 @@
 package model;
 
 import model.interfaces.IShapeCommand;
-
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,22 +30,23 @@ public class MoveShapeCommand implements IShapeCommand {
 
         for(Shape shape : shapeList) {
 
+            if(shape.containsPoints(mousePressed.x, mousePressed.y)) {
 
-            int newOriginX = shape.startPoint.x + deltaX;
-            int newOriginY = shape.startPoint.y + deltaY;
+                int newOriginX = shape.startPoint.x + deltaX;
+                int newOriginY = shape.startPoint.y + deltaY;
 
-            int newEndX = shape.endPoint.x + deltaX;
-            int newEndY = shape.endPoint.y + deltaY;
+                int newEndX = shape.endPoint.x + deltaX;
+                int newEndY = shape.endPoint.y + deltaY;
 
-            Point newOrigin = new Point(newOriginX, newOriginY);
-            Point newEnd = new Point(newEndX, newEndY);
+                Point newOrigin = new Point(newOriginX, newOriginY);
+                Point newEnd = new Point(newEndX, newEndY);
 
-            Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.shapeColor, shape.lineColor, shapeFactory.applicationState.getActiveShapeShadingType());
+                Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.shapeColor, shape.lineColor, shapeFactory.applicationState.getActiveShapeShadingType());
 
-            movedShapesList.add(shape);
-            movedShapesList.add(movedShape);
+                movedShapesList.add(shape);
+                movedShapesList.add(movedShape);
+            }
         }
-
     }
 
     @Override

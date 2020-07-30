@@ -14,10 +14,10 @@ import view.interfaces.IGuiWindow;
 import view.interfaces.IUiModule;
 import src.controller.DrawShapeHandler;
 import java.util.List;
-
 import java.util.ArrayList;
 
 public class Main {
+
     public static void main(String[] args){
 
         //Define UI Look at feel
@@ -27,6 +27,7 @@ public class Main {
 
         List<Shape> globalShapeList = new ArrayList<Shape>();
         List<Shape> selectedShapesList = new ArrayList<Shape>();
+        List<Shape> copiedShapesList = new ArrayList<Shape>();
 
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
