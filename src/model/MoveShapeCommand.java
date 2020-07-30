@@ -56,7 +56,7 @@ public class MoveShapeCommand implements IShapeCommand {
     public void run() {
 
         moveShape(shapeFactory.shapeList.globalShapeList);
-        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+        //shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }
