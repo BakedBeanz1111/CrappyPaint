@@ -43,8 +43,13 @@ public class MoveShapeCommand implements IShapeCommand {
 
                 Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.shapeColor, shape.lineColor, shapeFactory.applicationState.getActiveShapeShadingType());
 
+                shapeList.remove(shape);
+                shapeList.add(movedShape);
+                
                 movedShapesList.add(shape);
                 movedShapesList.add(movedShape);
+
+
             }
         }
     }
