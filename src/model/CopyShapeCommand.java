@@ -32,5 +32,7 @@ public class CopyShapeCommand implements IShapeCommand {
 
             copy(selectedShapeList);
         }
+
+        System.out.println("You copied a shape!");
     }
 }

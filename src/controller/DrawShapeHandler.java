@@ -24,9 +24,11 @@ public class DrawShapeHandler implements IDrawShapeHandler {
 
         Graphics2D graphics2D = paintCanvas.getGraphics2D();
 
+        //Every time DrawShapeHandler.update is called, place a white rectangle on the screen and than draw over it
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
 
+        //Only printing the most recent shape
         for(Shape shape : globalShapeList) {
 
             if(shape.shapeType.toString().equals("ELLIPSE")) {
@@ -82,7 +84,6 @@ public class DrawShapeHandler implements IDrawShapeHandler {
                     iShapeStrategy = new TriangleOutlineFilledInStrategy(shape, shape.shapeColor, shape.lineColor, graphics2D);
                 }
             }
-
         }
 
         iShapeStrategy.draw();

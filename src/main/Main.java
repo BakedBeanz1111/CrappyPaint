@@ -37,7 +37,7 @@ public class Main {
         ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList);
 
         //Setup Controller
-        JPaintController controller = new JPaintController(uiModule, appState);
+        JPaintController controller = new JPaintController(uiModule, appState, shapeList, selectedShapesList, copiedShapesList);
         model.ShapeColor.setup();
 
         //Setup Mouse
