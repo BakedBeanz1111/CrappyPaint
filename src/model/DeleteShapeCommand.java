@@ -1,5 +1,6 @@
 package model;
 
+import model.interfaces.IApplicationState;
 import model.interfaces.IShapeCommand;
 
 import java.util.List;
@@ -7,20 +8,23 @@ import java.util.List;
 public class DeleteShapeCommand implements IShapeCommand {
 
     public ShapeList shapeList;
-    public List<Shape> selectedShapesList;
+    public IApplicationState applicationState;
 
-
-    public DeleteShapeCommand(ShapeList shapeList, List<Shape> selectedShapesList) {
+    public DeleteShapeCommand(ShapeList shapeList, IApplicationState applicationState) {
 
         this.shapeList = shapeList;
-        this.selectedShapesList = selectedShapesList;
+        this.applicationState = applicationState;
     }
 
     public void delete() {
 
-        for(Shape shape : selectedShapesList) {
+        if(shapeList.globalShapeList.size() == 0) {
 
-            shapeList.globalShapeList.remove(shape);
+            System.out.println("Can't delete anything!");
+        }
+        else {
+
+            shapeList.globalShapeList.remove(shapeList.globalShapeList.size() - 1);
         }
     }
 
