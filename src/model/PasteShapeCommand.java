@@ -19,11 +19,11 @@ public class PasteShapeCommand implements IShapeCommand {
 
         for(Shape shape : copiedShapesList) {
 
-            shape.startPoint.x = 0;
-            shape.startPoint.y = 0;
+            shape.startPoint.x = shape.startPoint.x + 100;
+            shape.startPoint.y = shape.startPoint.y + 100;
 
-            shape.endPoint.x = 0;
-            shape.endPoint.y = 0;
+            shape.endPoint.x = shape.endPoint.x + 100;
+            shape.endPoint.y = shape.endPoint.y + 100;
 
             Shape copiedShape = new Shape(shape.startPoint, shape.endPoint, shape.shapeType, shape.shapeColor, shape.lineColor, shape.shapeShadingType);
 

@@ -31,8 +31,11 @@ public class CopyShapeCommand implements IShapeCommand {
         if(selectedShapeList != null) {
 
             copy(selectedShapeList);
+            System.out.println("You copied a shape!");
         }
+        else {
 
-        System.out.println("You copied a shape!");
+            System.out.println("You copied nothing!");
+        }
     }
 }
