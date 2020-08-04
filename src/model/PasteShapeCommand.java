@@ -37,7 +37,6 @@ public class PasteShapeCommand implements IShapeCommand {
     public void run() {
 
         paste(copiedShapesList);
-        shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeList.drawShapeHandler.update(shapeList.globalShapeList);
     }
 }

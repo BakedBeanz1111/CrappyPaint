@@ -44,14 +44,16 @@ public class MoveShapeCommand implements IShapeCommand {
                 Point newEnd = new Point(newEndX, newEndY);
 
                 Shape movedShape = new Shape(newOrigin, newEnd, shapeType, shape.shapeColor, shape.lineColor, shapeFactory.applicationState.getActiveShapeShadingType());
-                //Shape whiteOut = new Shape(mousePressed, mouseReleased, shapeType, ShapeColor.WHITE, ShapeColor.WHITE, ShapeShadingType.OUTLINE_AND_FILLED_IN);
 
                 shapeList.remove(shape);
                 shapeList.add(movedShape);
-                //shapeList.add(whiteOut);
 
                 movedShapesList.add(shape);
                 movedShapesList.add(movedShape);
+            }
+            else {
+
+                System.out.println("You're not clicking anything to move!");
             }
         }
     }
@@ -60,7 +62,6 @@ public class MoveShapeCommand implements IShapeCommand {
     public void run() {
 
         moveShape(shapeFactory.shapeList.globalShapeList);
-        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }
