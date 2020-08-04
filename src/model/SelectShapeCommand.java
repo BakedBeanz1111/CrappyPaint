@@ -38,6 +38,8 @@ public class SelectShapeCommand implements IShapeCommand {
                 shapeFactory.selectedShapesList.add(shape);
             }
         }
+
+        System.out.println("You have selected " + shapeFactory.selectedShapesList.size() + " shapes");
     }
 
     @Override

@@ -23,6 +23,9 @@ public class DrawShapeCommand {
 
         shape = new Shape(startPoint, endPoint, shapeType, shapeFactory.applicationState.getActivePrimaryColor(), shapeFactory.applicationState.getActiveSecondaryColor(), shapeFactory.applicationState.getActiveShapeShadingType());
         shapeFactory.shapeList.globalShapeList.add(shape);
+
+        System.out.println("You have drawn " + shapeFactory.shapeList.globalShapeList.size() + " shapes");
+
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

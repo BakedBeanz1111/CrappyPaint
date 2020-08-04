@@ -23,6 +23,8 @@ public class CopyShapeCommand implements IShapeCommand {
 
             copiedShapeList.add(shape);
         }
+
+        System.out.println("You have copied " + selectedShapeList.size() + " shapes");
     }
 
     @Override

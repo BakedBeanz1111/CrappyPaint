@@ -28,6 +28,8 @@ public class MoveShapeCommand implements IShapeCommand {
 
     public void moveShape(List<Shape> shapeList) {
 
+        System.out.println(shapeList.toString());
+
         for(Shape shape : shapeList) {
 
             if(shape.containsPoints(mousePressed.x, mousePressed.y)) {
@@ -58,7 +60,7 @@ public class MoveShapeCommand implements IShapeCommand {
     public void run() {
 
         moveShape(shapeFactory.shapeList.globalShapeList);
-        //shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+        shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
     }
 }

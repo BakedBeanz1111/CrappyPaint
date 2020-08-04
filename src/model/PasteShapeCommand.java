@@ -29,6 +29,8 @@ public class PasteShapeCommand implements IShapeCommand {
 
             shapeList.globalShapeList.add(copiedShape);
         }
+
+        System.out.println("You have pasted " + copiedShapesList.size() + " shapes");
     }
 
     @Override

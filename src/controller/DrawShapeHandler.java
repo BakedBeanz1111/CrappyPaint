@@ -28,6 +28,8 @@ public class DrawShapeHandler implements IDrawShapeHandler {
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0,0,paintCanvas.getWidth(),paintCanvas.getHeight());
 
+        System.out.println("I should be printing out " + globalShapeList.size() + " shapes");
+
         //Only printing the most recent shape
         for(Shape shape : globalShapeList) {
 
@@ -84,8 +86,8 @@ public class DrawShapeHandler implements IDrawShapeHandler {
                     iShapeStrategy = new TriangleOutlineFilledInStrategy(shape, shape.shapeColor, shape.lineColor, graphics2D);
                 }
             }
-        }
 
-        iShapeStrategy.draw();
+            iShapeStrategy.draw();
+        }
     }
 }
