@@ -30,7 +30,6 @@ public class DrawShapeHandler implements IDrawShapeHandler {
 
         System.out.println("I should be printing out " + globalShapeList.size() + " shapes");
 
-        //Only printing the most recent shape
         for(Shape shape : globalShapeList) {
 
             if(shape.shapeType.toString().equals("ELLIPSE")) {
