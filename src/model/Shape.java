@@ -92,9 +92,11 @@ public class Shape {
         }
     }
 
-    public void selectShape() {
+    //This is the wrong implementation since it changes the property of the shape
+    /*public void selectShape() {
 
         this.shapeShadingType = shapeShadingType.OUTLINE;
         this.lineColor = shapeColor.RED;
-    }
+    }*/
+
 }

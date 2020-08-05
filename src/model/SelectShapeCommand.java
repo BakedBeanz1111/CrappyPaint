@@ -33,7 +33,7 @@ public class SelectShapeCommand implements IShapeCommand {
 
                 System.out.println("You're clicking something!");
 
-                shape.selectShape();
+                //shape.selectShape(); This is the wrong implementation of select shape
 
                 shapeFactory.selectedShapesList.add(shape);
             }

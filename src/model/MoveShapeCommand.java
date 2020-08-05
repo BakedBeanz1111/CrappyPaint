@@ -32,6 +32,8 @@ public class MoveShapeCommand implements IShapeCommand {
 
         for(Shape shape : shapeList) {
 
+            System.out.println("moveShape");
+
             if(shape.containsPoints(mousePressed.x, mousePressed.y)) {
 
                 int newOriginX = shape.startPoint.x + deltaX;
