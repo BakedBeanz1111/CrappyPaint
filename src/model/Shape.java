@@ -1,7 +1,6 @@
 package model;
 
 import model.interfaces.IApplicationState;
-
 import java.awt.*;
 
 public class Shape {
@@ -93,6 +92,7 @@ public class Shape {
     }
 
     //This is the wrong implementation since it changes the property of the shape
+    //It should draw an outline around the selected shape but not change the internal properties of the shape
     public void selectShape() {
 
         this.shapeShadingType = shapeShadingType.OUTLINE;

@@ -1,7 +1,6 @@
 package model;
 
 import model.interfaces.IShapeStrategy;
-
 import java.awt.*;
 import java.util.EnumMap;
 
@@ -19,8 +18,6 @@ public class RectangleOutlineFilledInStrategy implements IShapeStrategy {
         this.shapeColor = fillColor;
         this.lineColor = lineColor;
         this.graphics2D = graphics2D;
-
-
     }
 
     @Override

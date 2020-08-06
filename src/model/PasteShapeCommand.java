@@ -1,7 +1,6 @@
 package model;
 
 import model.interfaces.IShapeCommand;
-
 import java.util.List;
 
 public class PasteShapeCommand implements IShapeCommand {

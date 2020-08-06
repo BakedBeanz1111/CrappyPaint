@@ -1,7 +1,6 @@
 package src.controller;
 
 import model.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -29,6 +28,7 @@ public class MouseAdapter extends JPanel implements MouseListener {
     //What is the difference between Mouse Clicked vs Mouse Pressed + Mouse Released?
     @Override
     public void mousePressed(MouseEvent e) {
+
         actionLog("Mouse Pressed", e);
         startPoint = new Point(e.getX(), e.getY());
     }

@@ -3,7 +3,6 @@ package model;
 //https://www.tutorialspoint.com/design_pattern/factory_pattern.htm
 
 import model.interfaces.IApplicationState;
-
 import java.util.List;
 
 public class ShapeFactory {

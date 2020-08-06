@@ -5,6 +5,8 @@ package model;
 
 //Information I found about EnumMaps: https://www.geeksforgeeks.org/enummap-class-java-example/
 
+//Candidate for cleanup
+
 import java.awt.*;
 import java.util.EnumMap;
 

@@ -26,9 +26,11 @@ public class MoveShapeCommand implements IShapeCommand {
         deltaY = mouseReleased.y - mousePressed.y;
     }
 
+    //The observed bug revolves around containsPoints function. It only says the first clicked shape has the contained points
+    //and doesn't select other shapes for movement
     public void moveShape(List<Shape> shapeList) {
 
-        System.out.println(shapeList.toString());
+        System.out.println(shapeList.toString()); //debug information to figure out why its not doing collision detection when selecting shapes
 
         for(Shape shape : shapeList) {
 

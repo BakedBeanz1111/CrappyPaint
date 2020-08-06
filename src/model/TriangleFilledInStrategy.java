@@ -1,7 +1,6 @@
 package model;
 
 import model.interfaces.IShapeStrategy;
-
 import java.awt.*;
 import java.util.EnumMap;
 
