@@ -1,20 +1,61 @@
 package model;
 
+import interfaces.IUndoRedo;
 import model.interfaces.IApplicationState;
+import model.interfaces.IShapeCommand;
 
-public class UndoCommand {
+import java.util.List;
 
-    public IApplicationState applicationState;
+public class UndoCommand implements IShapeCommand, IUndoRedo {
+
     public ShapeList shapeList;
+    public List<Shape> undoHistory;
+    public List<Shape> redoHistory;
 
-    public UndoCommand(IApplicationState applicationState, ShapeList shapeList) {
+    public UndoCommand(ShapeList shapeList, List<Shape> undoHistory, List<Shape> redoHistory) {
 
-        this.applicationState = applicationState;
         this.shapeList = shapeList;
+        this.undoHistory = undoHistory;
+        this.redoHistory = redoHistory;
     }
 
-    public void runUndo() {
+    @Override
+    public void undo() {
 
-        //remove most recent addition to shapeList
+    }
+
+    @Override
+    public void redo() {
+
+    }
+
+    @Override
+    public void run() {
+
+        undo();
+
+        if(shapeList.globalShapeList.size() == 0 & undoHistory.size() == 0) {
+
+            System.out.println("Can't undo anything!");
+        }
+        else {
+
+            int redoIndex = shapeList.globalShapeList.size() - 1;
+            Shape redoShape = shapeList.globalShapeList.get(redoIndex);
+
+            if( redoHistory.size() > 1) {
+
+                redoHistory.clear();
+                redoHistory.add(redoShape);
+            }
+            else {
+
+                redoHistory.add(redoShape);
+            }
+
+            shapeList.globalShapeList.remove(shapeList.globalShapeList.size() - 1);
+            shapeList.drawShapeHandler.paintCanvas.repaint();
+            shapeList.drawShapeHandler.update(shapeList.globalShapeList);
+        }
     }
 }
