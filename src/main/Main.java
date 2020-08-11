@@ -34,7 +34,7 @@ public class Main {
 
         IShapeStrategy iShapeStrategy = null;
         ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas, iShapeStrategy), globalShapeList);
-        ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList);
+        ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList, copiedShapesList);
 
         //Setup Controller
         JPaintController controller = new JPaintController(uiModule, appState, shapeList, selectedShapesList, copiedShapesList);

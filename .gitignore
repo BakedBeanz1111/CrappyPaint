@@ -28,3 +28,8 @@ hs_err_pid*
 /out/
 /.idea/
 /.idea/
+
+# Understand output Files
+CrappyPaint.txt
+CrappyPaint.udb
+CrappyPaint_html/

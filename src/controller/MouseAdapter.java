@@ -25,7 +25,6 @@ public class MouseAdapter extends JPanel implements MouseListener {
         System.out.println(action);
     }
 
-    //What is the difference between Mouse Clicked vs Mouse Pressed + Mouse Released?
     @Override
     public void mousePressed(MouseEvent e) {
 

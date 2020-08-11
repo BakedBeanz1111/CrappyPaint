@@ -10,12 +10,14 @@ public class ShapeFactory {
     public IApplicationState applicationState;
     public ShapeList shapeList;
     public List<Shape> selectedShapesList;
+    public List<Shape> copiedShapesList;
 
-    public ShapeFactory(IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList) {
+    public ShapeFactory(IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList, List<Shape> copiedShapesList) {
 
         this.applicationState = applicationState;
         this.shapeList = shapeList;
         this.selectedShapesList = selectedShapesList;
+        this.copiedShapesList = copiedShapesList;
     }
 
 }
