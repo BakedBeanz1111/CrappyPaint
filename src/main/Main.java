@@ -28,16 +28,18 @@ public class Main {
         List<Shape> globalShapeList = new ArrayList<Shape>();
         List<Shape> selectedShapesList = new ArrayList<Shape>();
         List<Shape> copiedShapesList = new ArrayList<Shape>();
+        List<Shape> undoHistory = new ArrayList<Shape>();
+        List<Shape> redoHistory = new ArrayList<Shape>();
 
         //Restore persistent application state
         ApplicationState appState = new ApplicationState(uiModule);
 
         IShapeStrategy iShapeStrategy = null;
-        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas, iShapeStrategy), globalShapeList);
+        ShapeList shapeList = new ShapeList(new DrawShapeHandler(paintCanvas, iShapeStrategy), globalShapeList, undoHistory, redoHistory);
         ShapeFactory shapeFactory = new ShapeFactory(appState, shapeList, selectedShapesList, copiedShapesList);
 
         //Setup Controller
-        JPaintController controller = new JPaintController(uiModule, appState, shapeList, selectedShapesList, copiedShapesList);
+        JPaintController controller = new JPaintController(uiModule, appState, shapeList, selectedShapesList, copiedShapesList, undoHistory, redoHistory);
         model.ShapeColor.setup();
 
         //Setup Mouse

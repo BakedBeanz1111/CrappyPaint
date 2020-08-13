@@ -17,13 +17,15 @@ public class JPaintController implements IJPaintController {
     public List<Shape> undoHistory;
     public List<Shape> redoHistory;
 
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList, List<Shape> copiedShapesList) {
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState, ShapeList shapeList, List<Shape> selectedShapesList, List<Shape> copiedShapesList, List<Shape> undoHistory, List<Shape> redoHistory) {
 
         this.uiModule = uiModule;
         this.applicationState = applicationState;
         this.shapeList = shapeList;
         this.selectedShapesList = selectedShapesList;
         this.copiedShapesList = copiedShapesList;
+        this.undoHistory = undoHistory;
+        this.redoHistory = redoHistory;
     }
 
     @Override
