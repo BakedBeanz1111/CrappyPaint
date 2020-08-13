@@ -2,7 +2,6 @@ package model;
 
 import interfaces.IUndoRedo;
 import model.interfaces.IShapeCommand;
-
 import java.util.List;
 
 public class RedoCommand implements IShapeCommand, IUndoRedo {
@@ -21,11 +20,13 @@ public class RedoCommand implements IShapeCommand, IUndoRedo {
     @Override
     public void undo() {
 
+        CommandHistory.undo();
     }
 
     @Override
     public void redo() {
 
+        CommandHistory.redo();
     }
 
     @Override

@@ -1,9 +1,10 @@
 package model;
 
+import interfaces.IUndoRedo;
 import model.interfaces.IShapeCommand;
 import java.util.List;
 
-public class PasteShapeCommand implements IShapeCommand {
+public class PasteShapeCommand implements IShapeCommand, IUndoRedo {
 
     public ShapeList shapeList;
     public List<Shape> copiedShapesList;
@@ -37,5 +38,17 @@ public class PasteShapeCommand implements IShapeCommand {
 
         paste(copiedShapesList);
         shapeList.drawShapeHandler.update(shapeList.globalShapeList);
+    }
+
+    @Override
+    public void undo() {
+
+        CommandHistory.undo();
+    }
+
+    @Override
+    public void redo() {
+
+        run();
     }
 }

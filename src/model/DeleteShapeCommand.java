@@ -1,17 +1,20 @@
 package model;
 
+import interfaces.IUndoRedo;
 import model.interfaces.IApplicationState;
 import model.interfaces.IShapeCommand;
 
-public class DeleteShapeCommand implements IShapeCommand {
+public class DeleteShapeCommand implements IShapeCommand, IUndoRedo {
 
     public ShapeList shapeList;
     public IApplicationState applicationState;
+    public Shape deletedShape;
 
     public DeleteShapeCommand(ShapeList shapeList, IApplicationState applicationState) {
 
         this.shapeList = shapeList;
         this.applicationState = applicationState;
+        deletedShape =shapeList.globalShapeList.get(shapeList.globalShapeList.size() - 1);
     }
 
     //This delete function deletes the most recent drawn shape, it doesn't delete the selected shape
@@ -35,5 +38,27 @@ public class DeleteShapeCommand implements IShapeCommand {
         delete();
         shapeList.drawShapeHandler.paintCanvas.repaint();
         shapeList.drawShapeHandler.update(shapeList.globalShapeList);
+    }
+
+    @Override
+    public void undo() {
+
+        CommandHistory.undo();
+        if(shapeList.globalShapeList.size() == 0) {
+
+            System.out.println("nothing to undo");
+        }
+        else {
+
+            shapeList.globalShapeList.add(deletedShape);
+            shapeList.drawShapeHandler.paintCanvas.repaint();
+            shapeList.drawShapeHandler.update(shapeList.globalShapeList);
+        }
+    }
+
+    @Override
+    public void redo() {
+
+        run();
     }
 }

@@ -1,11 +1,12 @@
 package model;
 
+import interfaces.IUndoRedo;
 import model.interfaces.IShapeCommand;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveShapeCommand implements IShapeCommand {
+public class MoveShapeCommand implements IShapeCommand, IUndoRedo {
 
     public Point mousePressed;
     public Point mouseReleased;
@@ -67,5 +68,27 @@ public class MoveShapeCommand implements IShapeCommand {
 
         moveShape(shapeFactory.shapeList.globalShapeList);
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
+    }
+
+    @Override
+    public void undo() {
+
+        if(shapeFactory.shapeList.globalShapeList.size() <= 0) {
+
+            System.out.println("you can't undo");
+        }
+        else{
+
+            shapeFactory.shapeList.globalShapeList.remove(shapeFactory.shapeList.globalShapeList.size()-1);
+
+            shapeFactory.shapeList.drawShapeHandler.paintCanvas.repaint();
+            shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
+        }
+    }
+
+    @Override
+    public void redo() {
+
+        run();
     }
 }

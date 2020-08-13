@@ -6,8 +6,8 @@ import java.util.Stack;
 
 public class CommandHistory {
 
-    static Stack<IUndoRedo> undoStack;
-    static Stack<IUndoRedo> redoStack;
+    private static final Stack<IUndoRedo> undoStack = new Stack<>();
+    private static final Stack<IUndoRedo> redoStack = new Stack<>();
 
     public static void add(IUndoRedo add) {
 

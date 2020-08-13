@@ -1,8 +1,10 @@
 package model;
 
+import interfaces.IUndoRedo;
+
 import java.awt.*;
 
-public class DrawShapeCommand {
+public class DrawShapeCommand implements IUndoRedo {
 
     public Point startPoint;
     public Point endPoint;
@@ -27,5 +29,19 @@ public class DrawShapeCommand {
         System.out.println("You have drawn " + shapeFactory.shapeList.globalShapeList.size() + " shapes");
 
         shapeFactory.shapeList.drawShapeHandler.update(shapeFactory.shapeList.globalShapeList);
+
+        CommandHistory.add(this);
+    }
+
+    @Override
+    public void undo() {
+
+        CommandHistory.undo();
+    }
+
+    @Override
+    public void redo() {
+
+        run();
     }
 }
