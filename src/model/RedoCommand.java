@@ -54,7 +54,7 @@ public class RedoCommand implements IShapeCommand, IUndoRedo {
             }
 
             shapeList.globalShapeList.add(undoShape);
-            shapeList.drawShapeHandler.paintCanvas.repaint();
+            //shapeList.drawShapeHandler.paintCanvas.repaint();
             shapeList.drawShapeHandler.update(shapeList.globalShapeList);
         }
     }
