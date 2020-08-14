@@ -1,7 +1,6 @@
 package model.interfaces;
 
 import model.Shape;
-
 import java.util.List;
 
 public interface IDrawShapeHandler {

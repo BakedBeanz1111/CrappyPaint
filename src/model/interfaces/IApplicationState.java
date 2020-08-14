@@ -6,6 +6,7 @@ import model.ShapeType;
 import model.StartAndEndPointMode;
 
 public interface IApplicationState {
+
     void setActiveShape();
 
     void setActivePrimaryColor();

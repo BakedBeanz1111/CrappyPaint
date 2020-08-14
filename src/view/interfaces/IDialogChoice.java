@@ -1,6 +1,7 @@
 package view.interfaces;
 
 public interface IDialogChoice<T> {
+
     String getDialogTitle();
 
     String getDialogText();

@@ -39,8 +39,8 @@ public enum ShapeColor {
         colorMap.put(ShapeColor.YELLOW, Color.YELLOW);
     }
 
-        public static EnumMap<ShapeColor, Color> getMap(){
+    public static EnumMap<ShapeColor, Color> getMap(){
 
-            return colorMap;
+        return colorMap;
     }
 }

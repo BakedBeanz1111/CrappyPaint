@@ -1,7 +1,6 @@
 package model;
 
 import interfaces.IUndoRedo;
-
 import java.awt.*;
 
 public class DrawShapeCommand implements IUndoRedo {
@@ -11,7 +10,6 @@ public class DrawShapeCommand implements IUndoRedo {
     public Shape shape;
     public ShapeType shapeType;
     public ShapeFactory shapeFactory;
-
 
     public DrawShapeCommand(Point startPoint, Point endPoint, ShapeType shapeType, ShapeFactory shapeFactory) {
 

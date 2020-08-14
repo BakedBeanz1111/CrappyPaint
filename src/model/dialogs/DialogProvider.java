@@ -9,6 +9,7 @@ import model.interfaces.IDialogProvider;
 import view.interfaces.IDialogChoice;
 
 public class DialogProvider implements IDialogProvider {
+
     private final IDialogChoice<ShapeType> chooseShapeDialog;
     private final IDialogChoice<ShapeColor> choosePrimaryColorDialog;
     private final IDialogChoice<ShapeColor> chooseSecondaryColorDialog;
@@ -17,6 +18,7 @@ public class DialogProvider implements IDialogProvider {
     private final IApplicationState applicationState;
 
     public DialogProvider(IApplicationState applicationState) {
+
         this.applicationState = applicationState;
         chooseShapeDialog = new ChooseShapeDialog(this.applicationState);
         choosePrimaryColorDialog = new ChoosePrimaryColorDialog(this.applicationState);
@@ -27,26 +29,31 @@ public class DialogProvider implements IDialogProvider {
 
     @Override
     public IDialogChoice<ShapeType> getChooseShapeDialog() {
+
         return chooseShapeDialog;
     }
 
     @Override
     public IDialogChoice<ShapeColor> getChoosePrimaryColorDialog() {
+
         return choosePrimaryColorDialog;
     }
 
     @Override
     public IDialogChoice<ShapeColor> getChooseSecondaryColorDialog() {
+
         return chooseSecondaryColorDialog;
     }
 
     @Override
     public IDialogChoice<ShapeShadingType> getChooseShadingTypeDialog() {
+
         return chooseShadingTypeDialog;
     }
 
     @Override
     public IDialogChoice<StartAndEndPointMode> getChooseStartAndEndPointModeDialog() {
+
         return chooseStartAndEndPointModeDialog;
     }
 }
