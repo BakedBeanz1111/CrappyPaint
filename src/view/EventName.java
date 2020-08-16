@@ -1,6 +1,7 @@
 package view;
 
 public enum EventName {
+
 	CHOOSE_SHAPE{
 
 		@Override
